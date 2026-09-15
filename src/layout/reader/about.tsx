@@ -1,13 +1,30 @@
 import Link from "next/link";
+import { Document, Github, LinkedIn, Mail } from "@/icons";
+
+const ICON = "h-[15px] w-[15px] flex-none";
 
 const LINKS = [
-  { label: "▤ View résumé", href: "/resume.pdf", primary: true },
   {
-    label: "in LinkedIn",
-    href: "https://www.linkedin.com/in/timilehin-omotugba/",
+    label: "View résumé",
+    href: "/resume.pdf",
+    icon: <Document className={ICON} />,
+    primary: true,
   },
-  { label: "◇ GitHub", href: "https://github.com/7emmytim" },
-  { label: "✉ Email me", href: "mailto:omotugbatimilehin7@gmail.com" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/timilehin-omotugba/",
+    icon: <LinkedIn className={ICON} />,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/7emmytim",
+    icon: <Github className={ICON} />,
+  },
+  {
+    label: "Email me",
+    href: "mailto:omotugbatimilehin7@gmail.com",
+    icon: <Mail className={ICON} />,
+  },
 ];
 
 export function About() {
@@ -28,7 +45,7 @@ export function About() {
       </p>
 
       <div className="flex flex-wrap gap-2.5">
-        {LINKS.map(({ label, href, primary }) => (
+        {LINKS.map(({ label, href, icon, primary }) => (
           <Link
             key={label}
             href={href}
@@ -40,6 +57,7 @@ export function About() {
                 : "border-card-line bg-card text-fg hover:border-accent hover:text-white"
             }`}
           >
+            {icon}
             {label}
           </Link>
         ))}
