@@ -37,7 +37,13 @@ export function MetaTags() {
       />
       <meta
         property="og:image"
-        content="https://timilehinomotugba.com/timilehin.png"
+        content="https://timilehinomotugba.com/og-image.png"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta
+        property="og:image:alt"
+        content="Timilehin Omotugba, Frontend Developer"
       />
 
       {/* Twitter */}
@@ -56,7 +62,7 @@ export function MetaTags() {
       />
       <meta
         property="twitter:image"
-        content="https://timilehinomotugba.com/timilehin.png"
+        content="https://timilehinomotugba.com/og-image.png"
       />
 
       {/* Favicon */}
