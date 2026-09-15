@@ -1,43 +1,22 @@
 import "@/styles/globals.css";
-import "@mantine/core/styles.css";
-import { createTheme, MantineProvider } from "@mantine/core";
 import type { AppProps } from "next/app";
-import { MetaTags } from "@/layout";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { MetaTags } from "@/layout";
 import { initMixpanel } from "@/lib";
-
-const theme = createTheme({
-  fontFamily: "Poppins, sans-serif",
-  primaryColor: "brand",
-  colors: {
-    brand: [
-      "#ececff",
-      "#c5c5f6",
-      "#9d9ded",
-      "#7676e6",
-      "#5454D4", // main shade (500)
-      "#3e3eb3",
-      "#2e2e93",
-      "#202072",
-      "#141452",
-      "#0a0a32",
-    ],
-  },
-  primaryShade: { light: 5, dark: 5 },
-});
+import { ModeProvider } from "@/context";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    initMixpanel(); // Initialize Mixpanel
+    initMixpanel();
   }, [router.events]);
 
   return (
-    <MantineProvider theme={theme} defaultColorScheme="light">
+    <ModeProvider>
       <MetaTags />
       <Component {...pageProps} />
-    </MantineProvider>
+    </ModeProvider>
   );
 }
