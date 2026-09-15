@@ -30,7 +30,10 @@ export function EditorShell({
           <ActivityBar />
           <Explorer />
 
-          <div className="grid min-w-0 grid-rows-[auto_auto_minmax(0,1fr)] bg-editor">
+          {/* min-h-0 matters: grid items default to min-height:auto, so without
+              it this column outgrows its track and the pane clips instead of
+              scrolling. */}
+          <div className="grid min-h-0 min-w-0 grid-rows-[auto_auto_minmax(0,1fr)] bg-editor">
             <TabStrip />
             <div
               ref={scrollerRef}
