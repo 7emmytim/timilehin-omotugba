@@ -68,23 +68,23 @@ export function MetaTags() {
       {/* Favicon. The ?v= is deliberate: browsers cache favicons hard and
           will keep showing a stale one for a long time otherwise. Bump it
           whenever the icon changes. */}
-      <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+      <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon-32x32.png?v=2"
+        href="/favicon-32x32.png?v=3"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon-16x16.png?v=2"
+        href="/favicon-16x16.png?v=3"
       />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/apple-touch-icon.png?v=2"
+        href="/apple-touch-icon.png?v=3"
       />
 
       {/* Structured Data (JSON-LD) */}
