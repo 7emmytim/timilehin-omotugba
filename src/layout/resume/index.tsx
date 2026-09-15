@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Document } from "@/icons";
+import { Document, TransmitRight } from "@/icons";
 
 const FILE = "/resume.pdf";
 
@@ -59,9 +59,10 @@ export function ResumeViewer() {
           href={FILE}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto flex-none hover:text-fg"
+          className="ml-auto flex flex-none items-center gap-1.5 hover:text-fg"
         >
-          Open in new tab ↗
+          Open in new tab
+          <TransmitRight className="h-3 w-3" />
         </Link>
         <Link
           href={FILE}

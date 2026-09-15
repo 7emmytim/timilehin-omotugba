@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import projects from "@/data/projects.json";
+import { TransmitRight } from "@/icons";
 import { Block, SectionHeading } from "./section";
 
 /** Strips protocol and trailing slash so the link reads as a domain. */
@@ -36,8 +37,9 @@ export function Work() {
                 {name}
               </h3>
               <span className="font-mono text-[11px] text-mute">{company}</span>
-              <span className="mt-2.5 block font-mono text-[11px] text-accent">
-                {domain(url)} ↗
+              <span className="mt-2.5 flex items-center gap-1.5 font-mono text-[11px] text-accent">
+                <span className="truncate">{domain(url)}</span>
+                <TransmitRight className="h-3 w-3 flex-none transition-transform duration-300 group-hover:-translate-y-px group-hover:translate-x-px" />
               </span>
             </div>
           </Link>
