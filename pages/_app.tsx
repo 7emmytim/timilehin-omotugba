@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { MetaTags } from "@/layout";
 import { initMixpanel } from "@/lib";
-import { ModeProvider } from "@/context";
+import { ModeProvider, NavProvider } from "@/context";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -21,8 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ModeProvider>
-      <MetaTags />
-      <Component {...pageProps} />
+      <NavProvider>
+        <MetaTags />
+        <Component {...pageProps} />
+      </NavProvider>
     </ModeProvider>
   );
 }

@@ -1,15 +1,10 @@
 import Link from "next/link";
+import { useNav } from "@/context";
 import { Document, Github, LinkedIn, Mail } from "@/icons";
 
 const ICON = "h-[15px] w-[15px] flex-none";
 
 const LINKS = [
-  {
-    label: "View résumé",
-    href: "/resume.pdf",
-    icon: <Document className={ICON} />,
-    primary: true,
-  },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/timilehin-omotugba/",
@@ -28,6 +23,8 @@ const LINKS = [
 ];
 
 export function About() {
+  const { openResume } = useNav();
+
   return (
     <section id="about" className="mb-11">
       <h1 className="m-0 mb-[7px] text-[clamp(30px,3.5vw,45px)] font-bold tracking-[-0.03em] text-balance text-white">
@@ -45,17 +42,22 @@ export function About() {
       </p>
 
       <div className="flex flex-wrap gap-2.5">
-        {LINKS.map(({ label, href, icon, primary }) => (
+        <button
+          type="button"
+          onClick={openResume}
+          className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-accent bg-accent px-3 py-2 font-mono text-xs font-medium text-accent-fg transition-[filter] hover:brightness-110"
+        >
+          <Document className={ICON} />
+          View résumé
+        </button>
+
+        {LINKS.map(({ label, href, icon }) => (
           <Link
             key={label}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 rounded-md border px-3 py-2 font-mono text-xs transition-colors ${
-              primary
-                ? "border-accent bg-accent font-medium text-accent-fg hover:brightness-110"
-                : "border-card-line bg-card text-fg hover:border-accent hover:text-white"
-            }`}
+            className="inline-flex items-center gap-2 rounded-md border border-card-line bg-card px-3 py-2 font-mono text-xs text-fg transition-colors hover:border-accent hover:text-white"
           >
             {icon}
             {label}

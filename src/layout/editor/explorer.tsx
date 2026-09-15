@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useMode, useNav } from "@/context";
 import experiences from "@/data/experiences.json";
 import projects from "@/data/projects.json";
@@ -30,8 +29,8 @@ function NavRow({
   meta?: string;
   nested?: boolean;
 }) {
-  const { active, goTo } = useNav();
-  const on = id === active;
+  const { active, goTo, openFile } = useNav();
+  const on = id === active && openFile === "doc";
 
   return (
     <button
@@ -78,7 +77,7 @@ function StaticRow({
 
 export function Explorer() {
   const { mode } = useMode();
-  const { items } = useNav();
+  const { items, openFile, openResume } = useNav();
 
   const counts: Record<string, string> = {
     experience: `${experiences.length} roles`,
@@ -110,17 +109,19 @@ export function Explorer() {
         <StaticRow label="contact.ts" icon="TS" ink="text-s-blue" nested />
       )}
 
-      <Link
-        href="/resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${ROW} pl-4 hover:bg-hover`}
+      <button
+        type="button"
+        onClick={openResume}
+        aria-current={openFile === "resume" ? "true" : undefined}
+        className={`${ROW} cursor-pointer pl-4 ${
+          openFile === "resume" ? "bg-sel text-white" : "hover:bg-hover"
+        }`}
       >
         <span className="w-4 flex-none text-center text-[11px] text-[#e06c75]">
           ▤
         </span>
         {mode === "dev" ? "resume.pdf" : "Résumé (PDF)"}
-      </Link>
+      </button>
 
       <div className="pt-4">
         <Heading>{mode === "dev" ? "Outline" : "Where I've worked"}</Heading>

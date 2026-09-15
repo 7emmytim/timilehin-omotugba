@@ -1,5 +1,5 @@
-import { useRef, type ReactNode } from "react";
-import { NavProvider } from "@/context";
+import type { ReactNode } from "react";
+import { useNav } from "@/context";
 import { ActivityBar } from "./activity-bar";
 import { Explorer } from "./explorer";
 import { Minimap } from "./minimap";
@@ -19,14 +19,18 @@ export function EditorShell({
   /** Optional bottom panel (the terminal, in dev mode). */
   panel?: ReactNode;
 }) {
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const { scrollerRef, openFile } = useNav();
 
   return (
-    <NavProvider scrollerRef={scrollerRef}>
+    <>
       <div className="grid h-[100dvh] grid-rows-[auto_minmax(0,1fr)_auto_auto] overflow-hidden bg-editor">
         <TitleBar />
 
-        <div className="grid min-h-0 grid-cols-[minmax(0,1fr)] lg:grid-cols-[48px_240px_minmax(0,1fr)_62px]">
+        <div className={`grid min-h-0 grid-cols-[minmax(0,1fr)] ${
+            openFile === "resume"
+              ? "lg:grid-cols-[48px_240px_minmax(0,1fr)]"
+              : "lg:grid-cols-[48px_240px_minmax(0,1fr)_62px]"
+          }`}>
           <ActivityBar />
           <Explorer />
 
@@ -43,12 +47,12 @@ export function EditorShell({
             </div>
           </div>
 
-          <Minimap />
+          {openFile === "doc" && <Minimap />}
         </div>
 
         {panel}
         <StatusBar />
       </div>
-    </NavProvider>
+    </>
   );
 }
