@@ -17,6 +17,8 @@ export async function initMixpanel() {
   mixpanel.init(MIXPANEL_TOKEN, {
     autocapture: true,
     track_pageview: true,
-    record_sessions_percent: 100,
+    // No session replay. Pageviews and autocapture answer everything worth
+    // knowing about a one-page site, without recording visitors.
+    record_sessions_percent: 0,
   });
 }
