@@ -1,14 +1,17 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 
 export default function Document() {
   return (
-    <Html lang="en" {...mantineHtmlProps}>
+    <Html lang="en">
       <Head>
-        <ColorSchemeScript defaultColorScheme="light" />
-        {/* Google Fonts: Poppins */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Instrument+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </Head>

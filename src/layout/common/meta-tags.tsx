@@ -14,11 +14,11 @@ export function MetaTags() {
       <meta name="title" content="Timilehin Omotugba | Frontend Developer" />
       <meta
         name="description"
-        content="Hi, I'm Timilehin — a frontend developer passionate about building beautiful, performant web experiences using React, Next.js, and modern tools."
+        content="Frontend developer with four years shipping production React. I build responsive, performant interfaces with Next.js, TypeScript and Tailwind CSS."
       />
       <meta
         name="keywords"
-        content="Frontend Developer, Timilehin Omotugba, React, Next.js, UI Developer, Portfolio"
+        content="Timilehin Omotugba, Frontend Developer, React, Next.js, TypeScript, Tailwind CSS, Abuja, Nigeria, Portfolio"
       />
       <meta name="author" content="Timilehin Omotugba" />
       <meta name="robots" content="index, follow" />
@@ -33,11 +33,17 @@ export function MetaTags() {
       />
       <meta
         property="og:description"
-        content="Explore my work as a frontend developer. I specialize in creating sleek and responsive interfaces with React, Next.js, and modern UI tools."
+        content="A portfolio built like a code editor. Read it as plain text, or flip to dev mode and read it as source."
       />
       <meta
         property="og:image"
-        content="https://timilehinomotugba.com/timilehin.png"
+        content="https://timilehinomotugba.com/og-image.png"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta
+        property="og:image:alt"
+        content="Timilehin Omotugba, Frontend Developer"
       />
 
       {/* Twitter */}
@@ -52,27 +58,34 @@ export function MetaTags() {
       />
       <meta
         property="twitter:description"
-        content="Hi, I'm Timilehin — a frontend developer passionate about building beautiful, performant web experiences."
+        content="A portfolio built like a code editor. Read it as plain text, or flip to dev mode and read it as source."
       />
       <meta
         property="twitter:image"
-        content="https://timilehinomotugba.com/timilehin.png"
+        content="https://timilehinomotugba.com/og-image.png"
       />
 
-      {/* Favicon */}
-      <link rel="icon" href="/favicon.ico" />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/apple-touch-icon.png"
-      />
+      {/* Favicon. The ?v= is deliberate: browsers cache favicons hard and
+          will keep showing a stale one for a long time otherwise. Bump it
+          whenever the icon changes. */}
+      <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon-32x32.png"
+        href="/favicon-32x32.png?v=3"
       />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png?v=3"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png?v=3"
+      />
 
       {/* Structured Data (JSON-LD) */}
       <script
@@ -83,10 +96,15 @@ export function MetaTags() {
             "@type": "Person",
             name: "Timilehin Omotugba",
             url: "https://timilehinomotugba.com",
-            image: "https://timilehinomotugba.com/favicon.png", // use a profile/brand image
+            image: "https://timilehinomotugba.com/avatar.png",
             jobTitle: "Frontend Developer",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Abuja",
+              addressCountry: "NG",
+            },
             description:
-              "I’m a frontend developer who builds clean, responsive, and performant web applications.",
+              "Frontend developer building clean, responsive, performant web applications with React and Next.js.",
             sameAs: [
               "https://github.com/7emmytim",
               "https://www.linkedin.com/in/timilehin-omotugba",

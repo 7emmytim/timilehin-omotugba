@@ -1,43 +1,30 @@
 import "@/styles/globals.css";
-import "@mantine/core/styles.css";
-import { createTheme, MantineProvider } from "@mantine/core";
 import type { AppProps } from "next/app";
-import { MetaTags } from "@/layout";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { MetaTags } from "@/layout";
 import { initMixpanel } from "@/lib";
-
-const theme = createTheme({
-  fontFamily: "Poppins, sans-serif",
-  primaryColor: "brand",
-  colors: {
-    brand: [
-      "#ececff",
-      "#c5c5f6",
-      "#9d9ded",
-      "#7676e6",
-      "#5454D4", // main shade (500)
-      "#3e3eb3",
-      "#2e2e93",
-      "#202072",
-      "#141452",
-      "#0a0a32",
-    ],
-  },
-  primaryShade: { light: 5, dark: 5 },
-});
+import { ModeProvider, NavProvider } from "@/context";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-
   useEffect(() => {
-    initMixpanel(); // Initialize Mixpanel
-  }, [router.events]);
+    // Wait for an idle moment so analytics never competes with first paint.
+    const start = () => void initMixpanel();
+
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(start, { timeout: 4000 });
+      return () => window.cancelIdleCallback(id);
+    }
+
+    const id = window.setTimeout(start, 2000);
+    return () => window.clearTimeout(id);
+  }, []);
 
   return (
-    <MantineProvider theme={theme} defaultColorScheme="light">
-      <MetaTags />
-      <Component {...pageProps} />
-    </MantineProvider>
+    <ModeProvider>
+      <NavProvider>
+        <MetaTags />
+        <Component {...pageProps} />
+      </NavProvider>
+    </ModeProvider>
   );
 }
