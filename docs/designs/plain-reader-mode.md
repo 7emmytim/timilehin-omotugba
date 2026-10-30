@@ -2,209 +2,121 @@
 
 Status: approved
 PRD: [plain-reader-mode.md](../prds/plain-reader-mode.md)
+Mockup: [editorial-mockup-light.html](editorial-mockup-light.html) (open it
+through the dev server, or straight from disk; images load from `public/`)
 
-## Starting point
+This replaces the first version of this doc, which kept the dark editor
+palette and described the layout in words only.
 
-Everything reuses what the site already has. No new colours, fonts or icons.
+## Direction
 
-- Colours: the existing Sage tokens in `styles/globals.css` (`editor`,
-  `card`, `card-line`, `hover`, `fg`, `mute`, `accent`, `accent-fg`). The
-  syntax colours and the editor-only surfaces (`title`, `activity`, `side`,
-  `gutter`) are not used on the plain page.
-- Font: Instrument Sans (`font-sans`) for everything. JetBrains Mono appears
-  only on the "View as code" button, as a hint of what's behind it.
-- Icons: the existing set in `src/icons` (Document, Mail, LinkedIn, GitHub,
-  TransmitRight).
-- Components: the four reader sections (`about`, `work`, `experience`,
-  `contact`) keep their structure and data. Each loses its `font-mono`
-  classes and gets slightly larger, more relaxed type.
+Editorial, type-led and light. References: the "Poulo" site in the
+[Awwwards portfolio gallery](https://www.awwwards.com/websites/portfolio/)
+and the big-type developer portfolio shots on
+[Dribbble](https://dribbble.com/search/developer-portfolio-website). Three
+directions were compared (two-column sticky profile, editorial, bento grid)
+and editorial was picked because it tells a story with real screenshots, which
+works best for visitors who don't read code.
 
-What goes: title bar with traffic lights, activity bar, file explorer, tab
-strip, line-number gutter, current-line highlight, minimap, status bar,
-blinking caret, the inner scrolling pane.
+Rejected along the way, kept for reference:
+- [editorial-mockup.html](editorial-mockup.html): the dark version with a
+  hero photo.
+- [switch-options.html](switch-options.html): three switch designs (toggle,
+  floating button, nav link). The toggle won.
 
-## Layout
+## Tokens
 
-One centred column, max width about 960px, 24px side padding on phones and
-40px on desktop. The window scrolls, not an inner pane.
+The plain page is light. The editor view stays dark and keeps the existing
+Sage tokens untouched. New tokens for the plain page:
 
-Desktop:
+| Token | Value | Use |
+| --- | --- | --- |
+| paper | #f7f6f2 | page background (warm off-white) |
+| paper-raised | #ffffff | cards, facts strip, screenshot frames |
+| paper-sunk | #efeee8 | subtle fills |
+| rule | #e4e2db | all lines and borders |
+| ink | #14151a | headings and body text (16.9:1) |
+| ink-75 | #3a3d46 | body copy |
+| ink-60 | #5b5f6b | secondary text (5.9:1, AA) |
+| leaf | #2a6e4c | accent text, primary button (5.7:1, AA) |
+| leaf-dim | #e7f1eb | "Open to work" pill fill |
+| leaf-line | #c5dfd0 | link underlines, pill border |
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│ (avatar) Timilehin Omotugba   About Work Experience Contact  │  sticky header
-│                                              [</> View as code]│
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Timilehin Omotugba                                          │  hero
-│  Frontend developer in Abuja, Nigeria · ● Open to work      │
-│                                                              │
-│  I build the parts of websites and apps that people see and  │
-│  use. Four years of shipping real products: ...              │
-│                                                              │
-│  [View résumé]  [Email me]  LinkedIn  GitHub                 │
-│                                                              │
-│  SELECTED WORK ──────────────────────────────────────────    │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐                      │
-│  │screenshot│ │screenshot│ │screenshot│                      │
-│  │Name      │ │Name      │ │Name      │                      │
-│  │Company   │ │Company   │ │Company   │                      │
-│  │One line  │ │One line  │ │One line  │                      │
-│  │Visit ↗   │ │Visit ↗   │ │Visit ↗   │                      │
-│  └──────────┘ └──────────┘ └──────────┘                      │
-│                                                              │
-│  EXPERIENCE ─────────────────────────────────────────────    │
-│  AF  Frontend Developer, AFEX                Jan 2021 - now  │
-│      Full-time · Hybrid                                      │
-│      Short description...                                    │
-│      Next.js  TypeScript  ...  (small, muted)                │
-│                                                              │
-│  CONTACT ────────────────────────────────────────────────    │
-│  Open to frontend roles...                                   │
-│  [Email card] [Phone card] [LinkedIn card] [GitHub card]     │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│ © 2026 Timilehin Omotugba        Prefer code? View as code → │  footer
-└──────────────────────────────────────────────────────────────┘
-```
+The contact panel reuses the editor's dark `editor` background and Sage
+`accent` (#7cc4a0), as a nod to the code view.
 
-Phone (375px):
+Fonts: Instrument Sans for everything, Instrument Serif italic for one
+accent word per heading ("enjoy", "use", "worked", "Let's talk."),
+JetBrains Mono only for project numbers and the switch's `dev` label.
 
-```
-┌───────────────────────────┐
-│ (av) Timilehin  [</> Code]│  sticky header, no section links
-├───────────────────────────┤
-│ Timilehin Omotugba        │
-│ Frontend developer        │
-│ Abuja · ● Open to work    │
-│                           │
-│ Intro paragraph           │
-│                           │
-│ [View résumé] full width  │
-│ [Email me]    full width  │
-│ LinkedIn · GitHub         │
-│                           │
-│ SELECTED WORK             │
-│ ┌───────────────────────┐ │
-│ │ screenshot            │ │  one card per row
-│ │ Name / Company        │ │
-│ │ One line              │ │
-│ └───────────────────────┘ │
-│ ...                       │
-└───────────────────────────┘
-```
+## Page, top to bottom
 
-## Pieces
+1. **Header** (sticky, 68px, blurred paper background, bottom rule). Avatar
+   and name on the left. Work, Experience, Contact links (desktop only).
+   The Dev mode toggle on the right.
+2. **Hero**. "Open to work" pill and "Frontend developer · Abuja, Nigeria".
+   Headline "I build websites and apps people *enjoy* using." up to 104px.
+   Lede and buttons on one row under it: "View résumé →" (leaf, filled),
+   "Email me" (white, outlined), LinkedIn and GitHub as text links. No photo.
+3. **Facts strip**. Four facts on a white band: 4+ years, 4 products, Remote,
+   Full-time.
+4. **Selected work**. Heading "Products people *use* every day". One row per
+   project, screenshot and text alternating sides. Screenshot in a white
+   frame with three grey dots and a soft shadow. Text: number, name, tag
+   chips, one-sentence description, "What I did", "Visit site ↗".
+5. **Experience**. Sticky left column with heading "Where I've *worked*",
+   a line about the résumé and "Download résumé ↓". Right column: one row per
+   role with dates, title at company, type, and one plain sentence.
+6. **Contact**. Dark rounded panel: "Hiring for a frontend role? *Let's
+   talk.*", a line about availability, the email as a large underlined link,
+   then phone, LinkedIn, GitHub and résumé. Photo on the right, 4:5, desktop
+   only.
+7. **Footer**. Copyright and "Prefer code? View as code →".
 
-### Header
+## Dev mode toggle
 
-- Sticky, `bg-editor/85` with a backdrop blur and a bottom `border-hair` line
-  that only shows once the page has scrolled.
-- Left: avatar (24px, round) and name. Clicking it scrolls to the top.
-- Middle (desktop only, 768px and up): section links About, Work, Experience,
-  Contact. The current section is `text-fg`, the rest `text-mute`. This
-  reuses the scroll spy in `NavProvider`, pointed at the window instead of
-  the editor pane.
-- Right: the view switch (below).
-- Phones drop the section links. The page is short enough to scroll, and a
-  hamburger menu would be one more thing to learn.
+A labelled on/off switch (`role="switch"`). Label "Dev mode" on desktop,
+`dev` in mono on phones. 38×22 track, white knob with a tiny `</>`.
 
-### View switch
+- Plain page: off, grey track. Turning it on opens the editor view.
+- Editor title bar: the same toggle, on, Sage track. Turning it off returns
+  to the plain page. It replaces the old two-icon `ModeSwitch`.
+- Title text: "See this page as the source code a developer would read".
 
-- Plain page: a bordered button, `</> View as code` on desktop and
-  `</> Code` on phones. Mono font, `border-card-line`, hover `border-accent`.
-  `title` text: "See this page as the source code a developer would read."
-- Editor view: the current two-icon `ModeSwitch` is replaced in the title bar
-  with a labelled button, `← Simple view`. This is the one change to dev
-  mode, because the PRD needs a clear way back.
-- Footer repeats it as a text link: "Prefer code? View as code →".
-- Switching scrolls to the top. No animated transition between the views.
+## Phones (under 860px)
 
-### Hero (about)
-
-- Name: same size as today, `font-bold`, no caret.
-- Role line: sans, `text-mute`, with a small accent dot and "Open to work",
-  which moves here from the status bar.
-- Intro: rewritten for a non-technical reader. Tool names (React, Next.js,
-  TypeScript) move out of the first sentence. Draft: "I build the parts of
-  websites and apps that people see and use. In four years I've shipped a
-  commodities trading platform, a donation flow that takes payments in
-  several currencies, and a grant management system for a national research
-  institute."
-- Buttons: "View résumé" stays the primary accent button. "Email me" becomes
-  the second filled button (`bg-card`). LinkedIn and GitHub become plain
-  icon-and-text links, so there are two clear actions instead of four equal
-  ones.
-
-### Selected work
-
-- Same grid and screenshot cards as today.
-- New: one-sentence description under the company name (`text-[14.5px]`,
-  `text-fg/75`), from `projects.json`.
-- The link line reads "Visit site ↗" instead of the bare domain.
-
-### Experience
-
-- Title and company on one line, dates right-aligned on desktop and under
-  the title on phones.
-- Type and location in sans `text-mute`.
-- Skill chips stay but use sans, `text-mute`, no accent colour, so they read
-  as a footnote.
-- Descriptions are clamped to three lines with a "Read more" toggle. Several
-  are long and full of terms like "Next.js middleware" and "Strapi CMS".
-  Shortening that copy is a content task outside this design, flagged below.
-
-### Contact
-
-- Same cards. Labels in sans instead of mono uppercase. Values in sans.
-- Email card first and slightly emphasised (`border-accent-line`), since the
-  copy says email is fastest.
-
-### Résumé
-
-- On the plain page "View résumé" opens a full-screen overlay with the same
-  iframe viewer, plus "Download" and "Close". Esc and the close button both
-  dismiss it, and focus returns to the button.
-- Phones (under 768px) skip the overlay and open the PDF directly, matching
-  what `ResumeViewer` already does.
-
-### Footer
-
-- `border-t border-hair`, small `text-mute`: copyright and the "View as code"
-  link.
+- Header 60px, name stays, nav hidden, toggle shows `dev`.
+- Hero: 40px top padding. Buttons are two equal halves, links below.
+- Facts: 2×2 grid with row lines only, on the page background.
+- Projects stack, screenshot first, 4:3 crop anchored top-left so the
+  product's own headline stays readable, no browser dots.
+- Experience stacks, dates above titles.
+- Contact: no photo, smaller padding, email at 16px.
+- Section spacing 64px.
 
 ## States
 
-- Loading: the site is static. Screenshots use `next/image` and keep their
-  16:10 box (`bg-card`) while loading, so nothing jumps.
-- First paint: `ModeProvider` already renders reader mode first, so the plain
-  page is what shows before the stored preference is read. A returning dev
-  visitor sees one frame of the plain page before the editor. Acceptable for
-  now, flagged in the plan.
-- Empty: if a project has no description, the card shows without that line
-  instead of an empty gap.
-- Error: a screenshot that fails to load shows the `bg-card` box with the
-  project name centred.
-- Résumé on desktop: if the iframe can't render a PDF, the "Open in new tab"
-  and "Download" links are still visible above it.
+- Screenshot fails to load: white frame with the project name centred.
+- Missing description or role in data: that line is left out, no gap.
+- Résumé: desktop opens a `<dialog>` with the PDF, Download and Close.
+  Phones open the PDF directly.
+- First paint: plain page renders first; a stored dev preference switches
+  after mount (unchanged from today).
 
 ## Accessibility
 
-- All text on `bg-editor` and `bg-card` meets AA. `text-mute` (#6a7187) on
-  #101117 is about 4.0:1, under 4.5:1 for small text, so on the plain page it
-  is used only for text 14px and larger or swapped for `text-fg/60`. To check
-  during Build.
-- Landmarks: `header`, `nav` (section links), `main`, `footer`.
-- One `h1` (the name), `h2` for each section heading (today they're `p`
-  tags), `h3` for project and job titles.
-- The view switch is a real button with a visible text label.
-- Focus ring: the existing `:focus-visible` accent outline.
-- Respects `prefers-reduced-motion` for smooth scrolling and card hover zoom.
+- All text pairs above meet AA (checked with the WCAG formula).
+- One `h1`, `h2` per section, `h3` per project and role.
+- Landmarks: header, nav, main, footer.
+- The toggle has a text label and `aria-checked`.
+- Focus ring visible on every control. Reduced motion turns off smooth
+  scrolling and the screenshot hover lift.
 
-## Content flagged for later
+## Content to confirm before shipping
 
-- Experience descriptions are long and technical. A plain-language rewrite
-  would help non-technical readers more than any styling. Not in this
-  change.
-- `experiences.json` gives Volomn the same dates as Helpa ("Aug 2022 - Nov
-  2022, Apr 2024 - Dec 2024"). Looks like a copy-paste mistake.
+Draft copy in the mockup that needs Timilehin's corrections:
+- "What I did" for each project, and "made them faster" for Africa Exchange.
+- Project descriptions for GMS and Light House Inverter.
+- "I usually reply within a day".
+- Volomn's real dates (the data repeats Helpa's).
+- A sharper photo (current one is 326×507).

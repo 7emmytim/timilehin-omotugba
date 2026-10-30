@@ -79,10 +79,10 @@ Out of scope:
   description and the live link.
 - Experience entries show title, company, dates and description. The skill
   chips stay but are visually secondary.
-- The "View as code" control is visible without scrolling on desktop and
-  phone, and its label is words, not only an icon.
-- The editor view has a labelled "Simple view" control that returns to the
-  plain page.
+- The Dev mode toggle is visible without scrolling on desktop and phone, and
+  has a text label, not only an icon.
+- The editor view shows the same toggle switched on; turning it off returns
+  to the plain page.
 - The chosen view still persists in localStorage the way it does today, and
   first-time visitors still get reader mode.
 - `?view=code` opens the editor view and `?view=simple` opens the plain page,
@@ -98,8 +98,11 @@ Out of scope:
 1. Recruiters come first. The intro copy and the main button are written for
    someone screening a candidate ("View résumé" stays the primary action).
    Clients are still served by the project links and contact section.
-2. Keep the current dark palette and accent colour so the two views feel like
-   one site. Only the editor frame and monospace fonts go.
+2. Changed during Design: the plain page is light (warm off-white with a
+   darker green accent), not the dark editor palette. Light reads better for
+   non-technical visitors and makes switching to the dark editor feel like a
+   real change of mode. Shared fonts and the green accent keep the two views
+   related. See the design reference.
 3. Add `?view=code` (and `?view=simple`) to open a specific view. A URL
    param wins over the stored preference for that visit and becomes the new
    stored preference.
@@ -109,6 +112,13 @@ Out of scope:
    the view switch are already captured. No custom event is added. The
    switch buttons get clear text labels so autocapture records something
    readable.
+
+6. Changed during Design: the view switch is a "Dev mode" on/off toggle,
+   used in both views, instead of a "View as code" button and a separate
+   "Simple view" button.
+7. Changed during Design: experience entries get one plain-language
+   sentence each instead of clamped long descriptions, and projects get a
+   "What I did" line. The long descriptions stay in the data for the dev view.
 
 ## Open questions
 

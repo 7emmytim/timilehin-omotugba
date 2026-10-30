@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Switch options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* Static comparison of three view-switch designs, in a desktop header and a
+     375px phone header. Not used by the app. */
+  :root {
+    --bg: #f7f6f2; --surface: #fff; --surface-2: #efeee8; --line: #e4e2db;
+    --fg: #14151a; --fg-60: #5b5f6b; --accent: #2a6e4c;
+    --ink: #101117; --ink-fg: #e8eaf0; --sage: #7cc4a0;
+    --sans: "Instrument Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 40px 32px 80px; background: #e9e8e2; font-family: var(--sans); color: var(--fg); }
+  h1 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.02em; }
+  .intro { margin: 0 0 36px; color: var(--fg-60); font-size: 15px; }
+  .option { margin-bottom: 48px; }
+  .option h2 { margin: 0 0 4px; font-size: 18px; }
+  .option p { margin: 0 0 16px; max-width: 80ch; color: var(--fg-60); font-size: 14.5px; line-height: 1.55; }
+  .frames { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+  .frame { position: relative; background: var(--bg); border-radius: 14px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.2); }
+  .frame.desk { width: 920px; height: 220px; }
+  .frame.phone { width: 375px; height: 220px; }
+  .frame small { position: absolute; left: 14px; bottom: 10px; font-size: 11px; color: var(--fg-60); }
+
+  .hdr { display: flex; align-items: center; gap: 28px; height: 64px; padding: 0 28px; border-bottom: 1px solid var(--line); }
+  .phone .hdr { padding: 0 18px; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15.5px; white-space: nowrap; }
+  .brand img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+  nav { margin-left: auto; display: flex; gap: 26px; font-size: 14.5px; color: var(--fg-60); }
+  .phone nav { display: none; }
+  .hero-hint { padding: 26px 28px 0; font-size: 34px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--fg); opacity: .9; }
+  .phone .hero-hint { padding: 22px 18px 0; font-size: 26px; }
+
+  /* A: a labelled on/off toggle */
+  .toggle { display: inline-flex; align-items: center; gap: 10px; border: 0; background: none; padding: 0; font: 500 14px var(--sans); color: var(--fg-60); cursor: pointer; white-space: nowrap; }
+  .phone .toggle { margin-left: auto; }
+  .toggle .track { position: relative; width: 38px; height: 22px; border-radius: 999px; background: #d9d7cf; transition: background .2s; }
+  .toggle .knob { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); display: grid; place-items: center; font: 600 7.5px var(--mono); color: var(--fg-60); transition: transform .2s; }
+  .toggle[aria-checked="true"] { color: var(--fg); }
+  .toggle[aria-checked="true"] .track { background: var(--ink); }
+  .toggle[aria-checked="true"] .knob { transform: translateX(16px); color: var(--ink); }
+  .toggle .lbl-mono { font-family: var(--mono); font-size: 12.5px; }
+
+  /* B: floating dark pill, bottom right */
+  .fab { position: absolute; right: 22px; bottom: 22px; display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px 11px 13px; border-radius: 999px; background: var(--ink); color: var(--ink-fg); font: 500 13.5px var(--sans); box-shadow: 0 8px 24px -8px rgba(16,17,23,.5); }
+  .fab b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; background: #1d202a; color: var(--sage); font: 600 11px var(--mono); }
+  .phone .fab { right: 16px; bottom: 16px; padding: 11px; }
+  .phone .fab span { display: none; }
+
+  /* C: quiet text link in the nav, set apart by a divider */
+  .codelink { display: inline-flex; align-items: center; gap: 8px; padding-left: 22px; border-left: 1px solid var(--line); font-size: 14.5px; color: var(--fg); white-space: nowrap; }
+  .codelink code { font: 600 12.5px var(--mono); color: var(--accent); }
+  .codelink:hover { color: var(--accent); }
+  .phone .codelink { margin-left: auto; border-left: 0; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); }
+  .phone .codelink span { display: none; }
+</style>
+</head>
+<body>
+  <h1>View switch: three options</h1>
+  <p class="intro">Each option shown in the desktop header and on a 375px phone. The current switch is the "Simple | Code" segmented control.</p>
+
+  <section class="option">
+    <h2>A. "Dev mode" toggle (recommended)</h2>
+    <p>A small on/off switch with a label, like a settings toggle. It says plainly that this is a mode you can turn on. It's compact enough that your name stays in the phone header. Turned on, the track goes dark and the page becomes the editor. The same toggle sits in the editor's title bar, turned on, so turning it off brings you back.</p>
+    <div class="frames">
+      <div class="frame desk">
+        <div class="hdr">
+          <span class="brand"><img src="/avatar.png" alt="" />Timilehin Omotugba</span>
+          <nav><span>Work</span><span>Experience</span><span>Contact</span></nav>
+          <button class="toggle" role="switch" aria-checked="false"><span>Dev mode</span><span class="track"><span class="knob">&lt;/&gt;</span></span></button>
+        </div>
+        <div class="hero-hint">I build websites and apps…</div>
+        <small>Off (default)</small>
+      </div>
+      <div class="frame phone">
+        <div class="hdr">
+          <span class="brand"><img src="/avatar.png" alt="" />Timilehin Omotugba</span>
+          <button class="toggle" role="switch" aria-checked="false"><span class="lbl-mono">dev</span><span class="track"><span class="knob">&lt;/&gt;</span></span></button>
+        </div>
+        <div class="hero-hint">I build websites and apps…</div>
+        <small>Phone, off</small>
+      </div>
+      <div class="frame phone">
+        <div class="hdr">
+          <span class="brand"><img src="/avatar.png" alt="" />Timilehin Omotugba</span>
+          <button class="toggle" role="switch" aria-checked="true"><span class="lbl-mono">dev</span><span class="track"><span class="knob">&lt;/&gt;</span></span></button>
+        </div>
+        <div class="hero-hint">I build websites and apps…</div>
+        <small>Phone, on (how it looks in the editor)</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <h2>B. Floating "View as code" button</h2>
+    <p>A dark pill fixed to the bottom-right corner, using the editor's colours. The header stays clean, and on phones it sits where your thumb is. It's the most eye-catching option. The risk is that people sometimes take a floating corner button for a chat widget, and it can cover content as you scroll.</p>
+    <div class="frames">
+      <div class="frame desk">
+        <div class="hdr">
+          <span class="brand"><img src="/avatar.png" alt="" />Timilehin Omotugba</span>
+          <nav><span>Work</span><span>Experience</span><span>Contact</span></nav>
+        </div>
+        <div class="hero-hint">I build websites and apps…</div>
+        <a class="fab"><b>&lt;/&gt;</b><span>View as code</span></a>
+      </div>
+      <div class="frame phone">
+        <div class="hdr">
+          <span class="brand"><img src="/avatar.png" alt="" />Timilehin Omotugba</span>
+        </div>
+        <div class="hero-hint">I build websites and apps…</div>
+        <a class="fab"><b>&lt;/&gt;</b><span>View as code</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <h2>C. Quiet link in the nav</h2>
+    <p>Reads like one more menu item, set apart by a thin divider, with a green <code>&lt;/&gt;</code>. The lowest-key option: it never competes with your content, but some visitors won't notice it. On phones it shrinks to a small <code>&lt;/&gt;</code> button.</p>
+    <div class="frames">
+      <div class="frame desk">
+        <div class="hdr">
+          <span class="brand"><img src="/avatar.png" alt="" />Timilehin Omotugba</span>
+          <nav><span>Work</span><span>Experience</span><span>Contact</span></nav>
+          <a class="codelink"><code>&lt;/&gt;</code><span>Code view</span></a>
+        </div>
+        <div class="hero-hint">I build websites and apps…</div>
+      </div>
+      <div class="frame phone">
+        <div class="hdr">
+          <span class="brand"><img src="/avatar.png" alt="" />Timilehin Omotugba</span>
+          <a class="codelink"><code>&lt;/&gt;</code><span>Code view</span></a>
+        </div>
+        <div class="hero-hint">I build websites and apps…</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
