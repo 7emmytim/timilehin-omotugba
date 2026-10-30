@@ -1,10 +1,9 @@
-import { Contact } from "@/layout/reader";
+import { Contact } from "./contact";
 import { Experience } from "./experience";
 import { Facts } from "./facts";
 import { Footer } from "./footer";
 import { Header } from "./header";
 import { Hero } from "./hero";
-import { WRAP } from "./shared";
 import { Work } from "./work";
 
 /**
@@ -20,10 +19,7 @@ export function PlainPage() {
         <Facts />
         <Work />
         <Experience />
-        {/* Old section, replaced in the next step. */}
-        <div className={`${WRAP} pt-16 pb-20`}>
-          <Contact />
-        </div>
+        <Contact />
       </main>
       <Footer />
     </div>

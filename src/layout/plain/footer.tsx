@@ -1,11 +1,14 @@
 import { useMode } from "@/context";
+import { WRAP } from "./shared";
 
 export function Footer() {
   const { setMode } = useMode();
 
   return (
-    <footer className="border-t border-hair">
-      <div className="mx-auto flex max-w-[960px] flex-wrap items-center justify-between gap-3 px-6 py-6 text-sm text-fg/60 sm:px-10">
+    <footer className="mt-12 border-t border-rule min-[860px]:mt-[clamp(56px,8vw,96px)]">
+      <div
+        className={`${WRAP} flex flex-wrap items-center justify-between gap-3 py-7 text-sm text-ink-60`}
+      >
         {/* The static build and the visitor's clock can disagree around New Year. */}
         <span suppressHydrationWarning>
           © {new Date().getFullYear()} Timilehin Omotugba
@@ -13,9 +16,10 @@ export function Footer() {
         <button
           type="button"
           onClick={() => setMode("dev")}
-          className="cursor-pointer transition-colors hover:text-white"
+          className="cursor-pointer transition-colors hover:text-ink"
         >
-          Prefer code? <span className="text-accent">View as code →</span>
+          Prefer code?{" "}
+          <span className="font-semibold text-leaf">View as code →</span>
         </button>
       </div>
     </footer>

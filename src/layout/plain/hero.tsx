@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ResumeButton } from "./resume-dialog";
 import { Accent, WRAP } from "./shared";
 
 const BUTTON =
@@ -40,15 +41,11 @@ export function Hero() {
 
           {/* Phones: two equal buttons, links on their own line underneath. */}
           <div className="grid grid-cols-2 gap-2.5 min-[860px]:flex min-[860px]:flex-wrap min-[860px]:items-center min-[860px]:gap-3.5">
-            {/* Opens the PDF in a new tab until the résumé dialog lands. */}
-            <Link
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ResumeButton
               className={`${BUTTON} bg-leaf text-white hover:brightness-110`}
             >
               View résumé →
-            </Link>
+            </ResumeButton>
             <Link
               href="mailto:omotugbatimilehin7@gmail.com"
               className={`${BUTTON} border border-rule bg-paper-raised text-ink hover:border-ink-60`}
