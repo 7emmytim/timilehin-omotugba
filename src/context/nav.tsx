@@ -15,7 +15,7 @@ export type NavItem = { id: string; label: string; icon: string; ink: string };
 
 const READER: NavItem[] = [
   { id: "about", label: "About", icon: "◆", ink: "text-accent" },
-  { id: "work", label: "Selected work", icon: "◆", ink: "text-accent" },
+  { id: "work", label: "Work", icon: "◆", ink: "text-accent" },
   { id: "experience", label: "Experience", icon: "◆", ink: "text-accent" },
   { id: "contact", label: "Contact", icon: "◆", ink: "text-accent" },
 ];

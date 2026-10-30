@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useMode } from "@/context";
-import { ModeSwitch } from "./mode-switch";
+import { DevModeToggle } from "@/layout/common/dev-mode-toggle";
 
 export function TitleBar() {
   const { mode } = useMode();
@@ -27,7 +27,7 @@ export function TitleBar() {
       </span>
 
       <div className="ml-auto md:ml-0">
-        <ModeSwitch />
+        <DevModeToggle tone="dark" />
       </div>
     </div>
   );

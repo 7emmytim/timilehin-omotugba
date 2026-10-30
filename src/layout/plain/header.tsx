@@ -1,50 +1,38 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { useNav } from "@/context";
-import { ViewSwitch } from "./view-switch";
+import { DevModeToggle } from "@/layout/common/dev-mode-toggle";
 
 export function Header() {
   const { items, active, goTo } = useNav();
-  const [scrolled, setScrolled] = useState(false);
-
-  // The divider only appears once content slides under the header.
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 4);
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
+  // The first item is the hero; the name already takes you there.
+  const [top, ...sections] = items;
 
   return (
-    <header
-      className={`sticky top-0 z-20 border-b bg-editor/85 backdrop-blur transition-colors ${
-        scrolled ? "border-hair" : "border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-[960px] items-center gap-6 px-6 sm:px-10">
+    <header className="sticky top-0 z-20 border-b border-rule bg-paper/85 backdrop-blur-md">
+      <div className="mx-auto flex h-[60px] max-w-[1180px] items-center gap-8 px-[clamp(20px,4vw,48px)] min-[860px]:h-[68px]">
         <a
-          href={`#${items[0].id}`}
+          href={`#${top.id}`}
           onClick={(event) => {
             event.preventDefault();
-            goTo(items[0].id);
+            goTo(top.id);
           }}
-          className="flex min-w-0 items-center gap-2.5 font-semibold text-white"
+          className="flex min-w-0 items-center gap-2.5 text-base font-semibold tracking-[-0.01em] text-ink"
         >
           <Image
             src="/avatar.png"
             alt=""
-            width={24}
-            height={24}
-            className="h-6 w-6 flex-none rounded-full object-cover ring-1 ring-hair"
+            width={28}
+            height={28}
+            className="h-7 w-7 flex-none rounded-full object-cover"
           />
           <span className="truncate">Timilehin Omotugba</span>
         </a>
 
         {/* Phones skip these: the page is short, and a menu is one more thing
             to learn. */}
-        <nav aria-label="Sections" className="ml-auto hidden md:block">
-          <ul className="m-0 flex list-none gap-5 p-0 text-sm">
-            {items.map(({ id, label }) => (
+        <nav aria-label="Sections" className="ml-auto hidden min-[860px]:block">
+          <ul className="m-0 flex list-none gap-7 p-0 text-[14.5px]">
+            {sections.map(({ id, label }) => (
               <li key={id}>
                 <a
                   href={`#${id}`}
@@ -53,8 +41,8 @@ export function Header() {
                     goTo(id);
                   }}
                   aria-current={active === id ? "true" : undefined}
-                  className={`transition-colors hover:text-white ${
-                    active === id ? "text-white" : "text-fg/60"
+                  className={`transition-colors hover:text-ink ${
+                    active === id ? "text-ink" : "text-ink-60"
                   }`}
                 >
                   {label}
@@ -64,8 +52,8 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="ml-auto md:ml-0">
-          <ViewSwitch />
+        <div className="ml-auto min-[860px]:ml-0">
+          <DevModeToggle tone="light" />
         </div>
       </div>
     </header>
