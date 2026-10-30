@@ -16,7 +16,8 @@ export function DevModeToggle({ tone }: { tone: "light" | "dark" }) {
       : "bg-ink"
     : dark
       ? "bg-hair group-hover:bg-sel"
-      : "bg-[#d9d7cf] group-hover:bg-[#cfcdc4]";
+      : // The fill alone is 1.3:1 on paper; the outline brings the edge to 3.1:1.
+        "bg-[#d9d7cf] ring-1 ring-[#8f8c82] ring-inset group-hover:bg-[#cfcdc4]";
 
   return (
     <button

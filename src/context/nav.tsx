@@ -83,7 +83,7 @@ export function NavProvider({ children }: { children: ReactNode }) {
           behavior,
         });
       } else {
-        // Respects the section's scroll-margin, which clears the sticky header.
+        // html's scroll-padding-top (globals.css) clears the sticky header.
         target.scrollIntoView({ behavior, block: "start" });
       }
       return true;

@@ -72,7 +72,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
         </h3>
 
         {tags.length > 0 && (
-          <ul className="m-0 my-3 flex list-none flex-wrap gap-2 p-0 min-[860px]:mt-3.5 min-[860px]:mb-4">
+          <ul role="list" className="m-0 my-3 flex list-none flex-wrap gap-2 p-0 min-[860px]:mt-3.5 min-[860px]:mb-4">
             {tags.map((tag) => (
               <li
                 key={tag}
@@ -121,7 +121,7 @@ export function Work() {
           </p>
         </div>
 
-        <ol className="m-0 list-none p-0">
+        <ol role="list" className="m-0 list-none p-0">
           {projects.map((project, index) => (
             <ProjectRow key={project.name} project={project} index={index} />
           ))}

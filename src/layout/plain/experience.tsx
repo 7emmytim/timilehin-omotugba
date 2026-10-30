@@ -33,7 +33,7 @@ export function Experience() {
           </Link>
         </div>
 
-        <ol className="m-0 list-none p-0">
+        <ol role="list" className="m-0 list-none p-0">
           {experiences.map(({ company, title, type, location, period, summary }) => (
             <li
               key={`${company}-${title}`}

@@ -1,6 +1,10 @@
 import Head from "next/head";
+import { yearsInWords } from "@/lib";
 
 export function MetaTags() {
+  const years = yearsInWords();
+  const shareDescription = `Frontend developer in Abuja, Nigeria. ${yearsInWords({ capitalize: true })} years building websites and apps for trading, healthcare and research teams. Turn on dev mode to read the site as source.`;
+
   return (
     <Head>
       {/* Primary Meta Tags */}
@@ -14,7 +18,7 @@ export function MetaTags() {
       <meta name="title" content="Timilehin Omotugba | Frontend Developer" />
       <meta
         name="description"
-        content="Frontend developer with four years shipping production React. I build responsive, performant interfaces with Next.js, TypeScript and Tailwind CSS."
+        content={`Frontend developer with ${years} years shipping production React. I build responsive, performant interfaces with Next.js, TypeScript and Tailwind CSS.`}
       />
       <meta
         name="keywords"
@@ -33,7 +37,7 @@ export function MetaTags() {
       />
       <meta
         property="og:description"
-        content="Frontend developer in Abuja, Nigeria. Four years building websites and apps for trading, healthcare and research teams. Turn on dev mode to read the site as source."
+        content={shareDescription}
       />
       <meta
         property="og:image"
@@ -58,7 +62,7 @@ export function MetaTags() {
       />
       <meta
         property="twitter:description"
-        content="Frontend developer in Abuja, Nigeria. Four years building websites and apps for trading, healthcare and research teams. Turn on dev mode to read the site as source."
+        content={shareDescription}
       />
       <meta
         property="twitter:image"

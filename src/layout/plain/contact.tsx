@@ -42,7 +42,7 @@ export function Contact() {
             omotugbatimilehin7@gmail.com →
           </Link>
 
-          <ul className="m-0 mt-7 flex list-none flex-wrap gap-x-5 gap-y-2.5 p-0 text-sm text-fg/60 min-[860px]:mt-10 min-[860px]:gap-x-7 min-[860px]:text-[15px]">
+          <ul role="list" className="m-0 mt-7 flex list-none flex-wrap gap-x-5 gap-y-2.5 p-0 text-sm text-fg/60 min-[860px]:mt-10 min-[860px]:gap-x-7 min-[860px]:text-[15px]">
             {CHANNELS.map(({ label, href }) => (
               <li key={href}>
                 <Link

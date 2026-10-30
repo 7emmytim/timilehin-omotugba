@@ -67,18 +67,20 @@ Out of scope:
 
 - Reader mode renders without the title bar, activity bar, explorer, tab
   strip, line-number gutter, minimap and status bar.
-- Body text, headings and buttons use the regular sans-serif font. Monospace
-  is not used anywhere in reader mode except, at most, the "View as code"
-  control.
+- Body text, headings and buttons use the regular sans-serif font, with a
+  serif italic for one accent word per heading. Monospace appears only as
+  small detail: project numbers and the toggle's `dev` label on phones.
 - The page scrolls as a normal page (the window scrolls), not inside a fixed
   pane. Browser back/forward and anchor links work.
-- A header with the name and links to the four sections stays reachable on
-  scroll. On phones the section links don't need a menu; they can scroll
-  horizontally or be dropped in favour of the content order.
-- Each project card shows a screenshot, name, company, one-sentence
-  description and the live link.
-- Experience entries show title, company, dates and description. The skill
-  chips stay but are visually secondary.
+- A sticky header with the name and links to Work, Experience and Contact
+  stays reachable on scroll. Phones drop the section links rather than add a
+  menu.
+- Each project shows a screenshot, name, tags, a one-sentence description,
+  what Timilehin did, and the live link.
+- Experience entries show title, company, dates and one plain sentence. Skill
+  chips are dropped from the plain page; they stay in the dev view.
+- Year counts ("N years") are worked out from the January 2021 start date,
+  not typed in, so they stay correct.
 - The Dev mode toggle is visible without scrolling on desktop and phone, and
   has a text label, not only an icon.
 - The editor view shows the same toggle switched on; turning it off returns
@@ -89,8 +91,9 @@ Out of scope:
   overriding and replacing the stored preference.
 - Résumé: desktop can open it in the page or a new tab, and download it.
   Phones get a direct open/download, no iframe.
-- Colour contrast meets WCAG AA. All controls are reachable and visible with
-  keyboard focus.
+- Colour contrast meets WCAG AA for text, and controls have at least 3:1
+  against the page. All controls are reachable and visible with keyboard
+  focus.
 - `yarn lint` and `yarn build` pass.
 
 ## Decisions

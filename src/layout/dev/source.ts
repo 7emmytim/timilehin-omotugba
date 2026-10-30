@@ -1,5 +1,6 @@
 import experiences from "@/data/experiences.json";
 import projects from "@/data/projects.json";
+import { yearsShipping } from "@/lib";
 import { t, type Line } from "./tokens";
 
 const BLANK: Line = [];
@@ -34,7 +35,11 @@ export type SourceSection = { id: string; lines: Line[] };
 export function buildSource(): SourceSection[] {
   const intro: Line[] = [
     [t.com("/**")],
-    [t.com(" * Frontend Developer, Abuja NG. Four years shipping production React.")],
+    [
+      t.com(
+        ` * Frontend Developer, Abuja NG. ${yearsShipping()}+ years shipping production React.`,
+      ),
+    ],
     [t.com(` * Currently at ${experiences[0].company}. Open to new work.`)],
     [t.com(" */")],
     BLANK,
@@ -54,7 +59,7 @@ export function buildSource(): SourceSection[] {
       t.p(", "),
       t.com("// remote-friendly"),
     ],
-    [t.p(`${INDENT}yearsShipping: `), t.num(4), t.p(",")],
+    [t.p(`${INDENT}yearsShipping: `), t.num(yearsShipping()), t.p(",")],
     [t.p(`${INDENT}available: `), t.lit("true"), t.p(",")],
     [t.p("};")],
   ];

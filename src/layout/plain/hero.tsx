@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { yearsInWords } from "@/lib";
 import { ResumeButton } from "./resume-dialog";
 import { Accent, WRAP } from "./shared";
 
@@ -34,9 +35,13 @@ export function Hero() {
         </h1>
 
         <div className="mt-7 grid gap-7 min-[860px]:mt-[clamp(32px,4vw,48px)] min-[860px]:grid-cols-[minmax(0,1fr)_auto] min-[860px]:items-end min-[860px]:gap-x-12">
-          <p className="m-0 max-w-[40ch] text-[clamp(19px,1.9vw,23px)] leading-[1.45] tracking-[-0.01em] text-ink-60">
-            Four years shipping real products for trading, healthcare and
-            research teams. Currently at AFEX.
+          {/* The build and the visitor's date can straddle an anniversary. */}
+          <p
+            suppressHydrationWarning
+            className="m-0 max-w-[40ch] text-[clamp(19px,1.9vw,23px)] leading-[1.45] tracking-[-0.01em] text-ink-60"
+          >
+            {yearsInWords({ capitalize: true })} years shipping real products for trading,
+            healthcare and research teams. Currently at AFEX.
           </p>
 
           {/* Phones: two equal buttons, links on their own line underneath. */}

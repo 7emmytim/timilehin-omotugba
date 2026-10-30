@@ -31,7 +31,7 @@ export function Header() {
         {/* Phones skip these: the page is short, and a menu is one more thing
             to learn. */}
         <nav aria-label="Sections" className="ml-auto hidden min-[860px]:block">
-          <ul className="m-0 flex list-none gap-7 p-0 text-[14.5px]">
+          <ul role="list" className="m-0 flex list-none gap-7 p-0 text-[14.5px]">
             {sections.map(({ id, label }) => (
               <li key={id}>
                 <a
