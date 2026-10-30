@@ -57,7 +57,12 @@ export function NavProvider({ children }: { children: ReactNode }) {
    */
   const muteSpyUntil = useRef(0);
 
-  useEffect(() => setActive(items[0].id), [items]);
+  // A mode switch starts fresh: back to the first section, and the résumé
+  // tab closes, since the plain page has no editor tab to show it in.
+  useEffect(() => {
+    setActive(items[0].id);
+    setOpenFile("doc");
+  }, [items]);
 
   const scrollToId = useCallback(
     (id: string) => {

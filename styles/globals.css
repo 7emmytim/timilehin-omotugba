@@ -55,6 +55,11 @@ body {
   color: var(--color-fg);
 }
 
+/* Keeps section headings clear of the plain page's sticky header (64px). */
+html {
+  scroll-padding-top: 88px;
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
