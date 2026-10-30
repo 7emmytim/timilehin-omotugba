@@ -1,14 +1,11 @@
 import Link from "next/link";
-import { useMode } from "@/context";
 
 export function StatusBar() {
-  const { mode } = useMode();
-
   return (
     <div className="flex h-[25px] items-center gap-4 overflow-x-auto border-t border-hair bg-activity px-3 font-mono text-[11.5px] whitespace-nowrap text-mute">
       <span className="flex flex-none items-center gap-1.5">⑂ main</span>
       <span className="hidden flex-none items-center gap-1.5 sm:flex">
-        {mode === "dev" ? "⊘ 0   ⚠ 0" : "◷ 4 years experience"}
+        {"⊘ 0   ⚠ 0"}
       </span>
 
       <span className="ml-auto flex flex-none items-center gap-4">
@@ -33,7 +30,7 @@ export function StatusBar() {
           GitHub
         </Link>
         <span className="hidden md:block">
-          {mode === "dev" ? "TypeScript" : "Abuja, NG · GMT+1"}
+          TypeScript
         </span>
       </span>
     </div>

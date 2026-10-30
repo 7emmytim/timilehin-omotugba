@@ -1,10 +1,7 @@
 import Image from "next/image";
-import { useMode } from "@/context";
 import { DevModeToggle } from "@/layout/common/dev-mode-toggle";
 
 export function TitleBar() {
-  const { mode } = useMode();
-
   return (
     <div className="flex h-[38px] items-center gap-[10px] border-b border-hair bg-title px-3 text-xs text-mute">
       <span className="flex flex-none gap-2" aria-hidden="true">
@@ -21,9 +18,7 @@ export function TitleBar() {
           height={20}
           className="h-5 w-5 flex-none rounded-full object-cover ring-1 ring-hair"
         />
-        {mode === "dev"
-          ? "timilehin.ts / timilehin-omotugba"
-          : "Timilehin Omotugba, Frontend Developer"}
+        timilehin.ts / timilehin-omotugba
       </span>
 
       <div className="ml-auto md:ml-0">

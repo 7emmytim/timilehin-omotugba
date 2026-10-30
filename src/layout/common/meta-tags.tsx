@@ -33,7 +33,7 @@ export function MetaTags() {
       />
       <meta
         property="og:description"
-        content="A portfolio built like a code editor. Read it as plain text, or flip to dev mode and read it as source."
+        content="Frontend developer in Abuja, Nigeria. Four years building websites and apps for trading, healthcare and research teams. Turn on dev mode to read the site as source."
       />
       <meta
         property="og:image"
@@ -58,7 +58,7 @@ export function MetaTags() {
       />
       <meta
         property="twitter:description"
-        content="A portfolio built like a code editor. Read it as plain text, or flip to dev mode and read it as source."
+        content="Frontend developer in Abuja, Nigeria. Four years building websites and apps for trading, healthcare and research teams. Turn on dev mode to read the site as source."
       />
       <meta
         property="twitter:image"
