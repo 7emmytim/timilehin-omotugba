@@ -1,9 +1,10 @@
-import { Contact, Experience, Work } from "@/layout/reader";
+import { Contact, Experience } from "@/layout/reader";
 import { Facts } from "./facts";
 import { Footer } from "./footer";
 import { Header } from "./header";
 import { Hero } from "./hero";
 import { WRAP } from "./shared";
+import { Work } from "./work";
 
 /**
  * Reader mode: an ordinary page for visitors who don't read code. No editor
@@ -16,9 +17,9 @@ export function PlainPage() {
       <main className="flex-1">
         <Hero />
         <Facts />
+        <Work />
         {/* Old sections, replaced one by one in the next steps. */}
         <div className={`${WRAP} pt-16 pb-20`}>
-          <Work />
           <Experience />
           <Contact />
         </div>
