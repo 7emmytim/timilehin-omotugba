@@ -41,9 +41,23 @@
   --color-s-type: #7cc4a0;
   --color-s-var: #9ec9f0;
 
+  /* the plain page (reader mode) is light, editorial. Contrast on paper:
+     ink 16.9:1, ink-60 5.9:1, leaf 5.7:1. */
+  --color-paper: #f7f6f2;
+  --color-paper-raised: #ffffff;
+  --color-paper-sunk: #efeee8;
+  --color-rule: #e4e2db;
+  --color-ink: #14151a;
+  --color-ink-75: #3a3d46;
+  --color-ink-60: #5b5f6b;
+  --color-leaf: #2a6e4c;
+  --color-leaf-dim: #e7f1eb;
+  --color-leaf-line: #c5dfd0;
+
   /* type */
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
 
   /* the editor's baseline grid, gutter line numbers key off this */
   --spacing-line: 22px;
@@ -55,7 +69,15 @@ body {
   color: var(--color-fg);
 }
 
-/* Keeps section headings clear of the plain page's sticky header (64px). */
+/* Reader mode is the light page. Setting it on html, not just the page
+   wrapper, keeps the overscroll area on phones the same colour. */
+html[data-mode="reader"],
+html[data-mode="reader"] body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Keeps section headings clear of the plain page's sticky header (68px). */
 html {
   scroll-padding-top: 88px;
 }
@@ -73,6 +95,15 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+/* The Sage accent is too pale to see on paper, so the light page uses leaf. */
+html[data-mode="reader"] ::selection {
+  background: var(--color-leaf);
+  color: #fff;
+}
+html[data-mode="reader"] :focus-visible {
+  outline-color: var(--color-leaf);
 }
 
 /* editor-style thin scrollbars */

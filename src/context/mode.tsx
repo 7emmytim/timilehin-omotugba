@@ -59,6 +59,11 @@ export function ModeProvider({ children }: { children: ReactNode }) {
     setReady(true);
   }, [setMode]);
 
+  // The page background lives on <html> (see globals.css), so it follows the mode.
+  useEffect(() => {
+    document.documentElement.dataset.mode = mode;
+  }, [mode]);
+
   return (
     <ModeContext.Provider value={{ mode, setMode, ready }}>
       {children}
