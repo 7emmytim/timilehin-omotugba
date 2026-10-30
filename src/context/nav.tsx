@@ -61,16 +61,26 @@ export function NavProvider({ children }: { children: ReactNode }) {
 
   const scrollToId = useCallback(
     (id: string) => {
+      // No pane means the plain page, where the window scrolls.
       const scroller = scrollerRef.current;
-      const target = scroller?.querySelector<HTMLElement>(`#${CSS.escape(id)}`);
-      if (!scroller || !target) return false;
+      const target = (scroller ?? document).querySelector<HTMLElement>(
+        `#${CSS.escape(id)}`,
+      );
+      if (!target) return false;
 
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const behavior = reduced ? "auto" : "smooth";
       muteSpyUntil.current = Date.now() + (reduced ? 120 : 900);
-      scroller.scrollTo({
-        top: target.offsetTop - scroller.offsetTop - 8,
-        behavior: reduced ? "auto" : "smooth",
-      });
+
+      if (scroller) {
+        scroller.scrollTo({
+          top: target.offsetTop - scroller.offsetTop - 8,
+          behavior,
+        });
+      } else {
+        // Respects the section's scroll-margin, which clears the sticky header.
+        target.scrollIntoView({ behavior, block: "start" });
+      }
       return true;
     },
     [scrollerRef],
@@ -117,11 +127,14 @@ export function NavProvider({ children }: { children: ReactNode }) {
 
   // Scroll spy: the active tab follows where the reader actually is.
   useEffect(() => {
+    if (openFile !== "doc") return;
+    // Null on the plain page: the observer then watches the viewport.
     const scroller = scrollerRef.current;
-    if (!scroller || openFile !== "doc") return;
 
     const targets = items
-      .map(({ id }) => scroller.querySelector<HTMLElement>(`#${CSS.escape(id)}`))
+      .map(({ id }) =>
+        (scroller ?? document).querySelector<HTMLElement>(`#${CSS.escape(id)}`),
+      )
       .filter((el): el is HTMLElement => Boolean(el));
     if (!targets.length) return;
 
@@ -144,17 +157,21 @@ export function NavProvider({ children }: { children: ReactNode }) {
     // never call it current. At the bottom of the scroll, it always is.
     const onScroll = () => {
       if (Date.now() < muteSpyUntil.current) return;
-      const remaining =
-        scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight;
+      const remaining = scroller
+        ? scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight
+        : document.documentElement.scrollHeight -
+          window.scrollY -
+          window.innerHeight;
       if (remaining < 4) setActive(items[items.length - 1].id);
     };
 
-    scroller.addEventListener("scroll", onScroll, { passive: true });
+    const scrollTarget = scroller ?? window;
+    scrollTarget.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
     return () => {
       observer.disconnect();
-      scroller.removeEventListener("scroll", onScroll);
+      scrollTarget.removeEventListener("scroll", onScroll);
     };
   }, [items, scrollerRef, openFile]);
 
