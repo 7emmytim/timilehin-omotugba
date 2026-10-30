@@ -1,6 +1,9 @@
-import { About, Contact, Experience, Work } from "@/layout/reader";
+import { Contact, Experience, Work } from "@/layout/reader";
+import { Facts } from "./facts";
 import { Footer } from "./footer";
 import { Header } from "./header";
+import { Hero } from "./hero";
+import { WRAP } from "./shared";
 
 /**
  * Reader mode: an ordinary page for visitors who don't read code. No editor
@@ -8,13 +11,17 @@ import { Header } from "./header";
  */
 export function PlainPage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col">
+    <div className="flex min-h-[100dvh] flex-col bg-paper text-ink">
       <Header />
-      <main className="mx-auto w-full max-w-[960px] flex-1 px-6 pt-12 pb-20 sm:px-10">
-        <About />
-        <Work />
-        <Experience />
-        <Contact />
+      <main className="flex-1">
+        <Hero />
+        <Facts />
+        {/* Old sections, replaced one by one in the next steps. */}
+        <div className={`${WRAP} pt-16 pb-20`}>
+          <Work />
+          <Experience />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>
