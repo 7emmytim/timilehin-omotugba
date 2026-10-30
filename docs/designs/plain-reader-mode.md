@@ -118,5 +118,6 @@ Draft copy in the mockup that needs Timilehin's corrections:
 - "What I did" for each project, and "made them faster" for Africa Exchange.
 - Project descriptions for GMS and Light House Inverter.
 - "I usually reply within a day".
-- Volomn's real dates (the data repeats Helpa's).
+- Volomn's real dates. `experiences.json` has a placeholder ("Jan 2023 -
+  Jun 2023", shown as "2023") until the real ones are known.
 - A sharper photo (current one is 326×507).
