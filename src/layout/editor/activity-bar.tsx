@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { SoonButton } from "./soon-button";
+
 type Item = { label: string; path: string; active?: boolean };
 
 const TOP: Item[] = [
@@ -19,17 +22,8 @@ export function ActivityBar() {
       aria-label="Activity bar"
       className="hidden flex-col items-center gap-0.5 bg-activity py-2.5 lg:flex"
     >
-      {TOP.map(({ label, path, active }) => (
-        <button
-          key={label}
-          type="button"
-          aria-label={label}
-          className={`grid h-11 w-11 cursor-pointer place-items-center border-l-2 ${
-            active
-              ? "border-accent text-fg"
-              : "border-transparent text-mute hover:text-fg"
-          }`}
-        >
+      {TOP.map(({ label, path, active }) => {
+        const icon = (
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -48,8 +42,39 @@ export function ActivityBar() {
             )}
             <path d={path} />
           </svg>
-        </button>
-      ))}
+        );
+
+        // Explorer is the panel already showing; the others aren't built yet.
+        return active ? (
+          <button
+            key={label}
+            type="button"
+            aria-label={label}
+            aria-current="true"
+            className="grid h-11 w-11 cursor-pointer place-items-center border-l-2 border-accent text-fg"
+          >
+            {icon}
+          </button>
+        ) : (
+          <SoonButton
+            key={label}
+            label={label}
+            side="right"
+            className="grid h-11 w-11 place-items-center border-l-2 border-transparent text-mute hover:text-fg"
+          >
+            {icon}
+          </SoonButton>
+        );
+      })}
+
+      {/* Where an editor shows the signed-in account. */}
+      <Image
+        src="/avatar.png"
+        alt=""
+        width={28}
+        height={28}
+        className="mt-auto mb-1 h-7 w-7 rounded-full object-cover ring-1 ring-hair"
+      />
     </nav>
   );
 }

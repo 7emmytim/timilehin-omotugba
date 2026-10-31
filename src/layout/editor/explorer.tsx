@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useNav } from "@/context";
 import experiences from "@/data/experiences.json";
 import projects from "@/data/projects.json";
+import { SoonButton } from "./soon-button";
 
 const ROW =
   "flex w-full items-center gap-2 py-[5px] pr-[18px] text-left text-[12.5px] whitespace-nowrap";
@@ -21,6 +23,7 @@ function NavRow({
   ink,
   meta,
   nested,
+  marksActive = true,
 }: {
   id: string;
   label: string;
@@ -28,9 +31,11 @@ function NavRow({
   ink: string;
   meta?: string;
   nested?: boolean;
+  /** Off for outline rows, so the file row alone shows where you are. */
+  marksActive?: boolean;
 }) {
   const { active, goTo, openFile } = useNav();
-  const on = id === active && openFile === "doc";
+  const on = marksActive && id === active && openFile === "doc";
 
   return (
     <button
@@ -50,33 +55,9 @@ function NavRow({
   );
 }
 
-/** A static row: not navigation, just texture. */
-function StaticRow({
-  label,
-  icon,
-  ink,
-  meta,
-  nested,
-}: {
-  label: string;
-  icon: string;
-  ink: string;
-  meta?: string;
-  nested?: boolean;
-}) {
-  return (
-    <div className={`${ROW} ${nested ? "pl-8" : "pl-4"}`}>
-      <span className={`w-4 flex-none text-center text-[11px] ${ink}`}>
-        {icon}
-      </span>
-      {label}
-      {meta && <span className="ml-auto text-[10.5px] text-mute">{meta}</span>}
-    </div>
-  );
-}
-
 export function Explorer() {
   const { items, openFile, openResume } = useNav();
+  const [srcOpen, setSrcOpen] = useState(true);
 
   const counts: Record<string, string> = {
     "file-experience": `${experiences.length}`,
@@ -87,13 +68,40 @@ export function Explorer() {
     <aside className="hidden overflow-y-auto border-r border-hair bg-side py-2.5 text-fg editor-scroll lg:block">
       <Heading>Explorer: portfolio</Heading>
 
-      <StaticRow label="src" icon="▾" ink="text-[#c09553]" />
+      <button
+        type="button"
+        onClick={() => setSrcOpen((open) => !open)}
+        aria-expanded={srcOpen}
+        aria-controls="explorer-src"
+        className={`${ROW} cursor-pointer pl-4 hover:bg-hover`}
+      >
+        <span className="w-4 flex-none text-center text-[11px] text-[#c09553]">
+          {srcOpen ? "▾" : "▸"}
+        </span>
+        src
+      </button>
 
-      {items.map((item) => (
-        <NavRow key={item.id} {...item} meta={counts[item.id]} nested />
-      ))}
+      {srcOpen && (
+        <div id="explorer-src">
+          {items.map((item) => (
+            <NavRow key={item.id} {...item} meta={counts[item.id]} nested />
+          ))}
 
-      <StaticRow label="contact.ts" icon="TS" ink="text-s-blue" nested />
+          {/* Not a real file: the contact details are the terminal output. */}
+          <SoonButton
+            label="contact.ts"
+            tip="Contact details are in the terminal below"
+            side="right"
+            wide
+            className={`${ROW} pl-8 hover:bg-hover`}
+          >
+            <span className="w-4 flex-none text-center text-[11px] text-s-blue">
+              TS
+            </span>
+            contact.ts
+          </SoonButton>
+        </div>
+      )}
 
       <button
         type="button"
@@ -111,9 +119,28 @@ export function Explorer() {
 
       <div className="pt-4">
         <Heading>Outline</Heading>
-        <StaticRow label="Developer" icon="◈" ink="text-s-blue" />
-        <StaticRow label="experience[]" icon="ƒ" ink="text-s-fn" />
-        <StaticRow label="projects[]" icon="ƒ" ink="text-s-fn" />
+        {/* Symbols jump to the same places as their files. */}
+        <NavRow
+          id="file-timilehin"
+          label="Developer"
+          icon="◈"
+          ink="text-s-blue"
+          marksActive={false}
+        />
+        <NavRow
+          id="file-experience"
+          label="experience[]"
+          icon="ƒ"
+          ink="text-s-fn"
+          marksActive={false}
+        />
+        <NavRow
+          id="file-projects"
+          label="projects[]"
+          icon="ƒ"
+          ink="text-s-fn"
+          marksActive={false}
+        />
       </div>
     </aside>
   );

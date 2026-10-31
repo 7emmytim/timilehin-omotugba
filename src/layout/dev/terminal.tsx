@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { SoonButton } from "@/layout/editor/soon-button";
 
 const OUTPUT = [
   {
@@ -27,8 +28,18 @@ export function Terminal() {
         <b className="pb-[7px] font-medium text-white shadow-[inset_0_-2px_0_var(--color-accent)]">
           Terminal
         </b>
-        <span className="hidden sm:inline">Problems</span>
-        <span className="hidden sm:inline">Output</span>
+        {/* They look like tabs, so say they're not built yet rather than
+            silently ignoring the click. */}
+        {["Problems", "Output"].map((tab) => (
+          <span key={tab} className="hidden sm:inline-flex">
+            <SoonButton
+              label={tab}
+              className="pb-[7px] font-mono text-[11px] tracking-[0.08em] text-mute uppercase hover:text-fg"
+            >
+              {tab}
+            </SoonButton>
+          </span>
+        ))}
 
         <button
           type="button"
