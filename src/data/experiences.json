@@ -1,11 +1,23 @@
 [
     {
+        "company": "ReactSquad",
+        "title": "React Engineer",
+        "type": "Full-time",
+        "location": "Remote",
+        "duration": "2025 - Present",
+        "period": "2025 – now",
+        "description": "Build and maintain React applications for ReactSquad’s internal projects and for external clients, including BadDecisions, RetailStars and TradeBuilder.",
+        "summary": "I build React apps for ReactSquad's internal projects and for clients such as BadDecisions, RetailStars and TradeBuilder.",
+        "skills": [
+            "React",
+            "TypeScript"
+        ]
+    },
+    {
         "company": "AFEX",
         "title": "Frontend Developer",
         "type": "Full-time",
         "location": "Hybrid",
-        "duration": "Jan 2021 - Present",
-        "period": "2021 – now",
         "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQGUXraIhl0u8w/company-logo_100_100/company-logo_100_100/0/1630644778319/afex_commodities_exchange_logo?e=1761782400&v=beta&t=1wjrZWIqYHNZTCs8LidvduOyfTXZDsdZboo4sBrciYM",
         "description": "Developed and maintained responsive, secure frontend components for Africa Exchange’s flagship trading platform by translating Figma designs and integrating backend APIs. Collaborated closely with designers, product managers, and backend engineers to deliver scalable, intuitive user experiences. Led performance optimizations, refactored legacy code to meet evolving business needs, and ensured adherence to Agile processes while implementing security best practices against common web vulnerabilities.",
         "summary": "I build the trading platform's screens with designers, product managers and backend engineers, and keep them fast and secure.",

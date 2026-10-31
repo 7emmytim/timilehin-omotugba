@@ -31,7 +31,7 @@ export function Contact() {
             </em>
           </h2>
           <p className="m-0 mt-3.5 mb-6 max-w-[50ch] text-[15.5px] leading-[1.6] text-fg/75 min-[860px]:mt-5 min-[860px]:mb-9 min-[860px]:text-[17px]">
-            Open to full-time or contract work, remote or in Abuja. Email is the
+            Open to full-time or contract work, remote or on site. Email is the
             fastest way to reach me, and I usually reply within a day.
           </p>
 
@@ -78,7 +78,7 @@ export function Contact() {
             />
           </span>
           <figcaption className="mt-3 text-[13.5px] text-fg/60">
-            Timilehin, in Abuja
+            Timilehin Omotugba
           </figcaption>
         </figure>
       </section>

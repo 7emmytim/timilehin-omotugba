@@ -39,7 +39,8 @@ export function Experience() {
               key={`${company}-${title}`}
               className="grid gap-1.5 border-t border-rule py-[22px] last:border-b min-[860px]:grid-cols-[150px_minmax(0,1fr)] min-[860px]:gap-6 min-[860px]:py-7"
             >
-              <span className="text-sm text-ink-60 tabular-nums min-[860px]:pt-1">
+              {/* Some roles show no dates; the empty cell keeps the columns aligned. */}
+              <span className="text-sm text-ink-60 tabular-nums empty:hidden min-[860px]:pt-1 min-[860px]:empty:block">
                 {period}
               </span>
               <div>
@@ -47,7 +48,7 @@ export function Experience() {
                   {title} <span className="font-medium text-ink-60">at {company}</span>
                 </h3>
                 <span className="mt-1 block text-[13.5px] text-ink-60">
-                  {type} · {location}
+                  {[type, location].filter(Boolean).join(" · ")}
                 </span>
                 <p className="m-0 mt-2.5 text-base leading-[1.6] text-ink-75">
                   {summary}

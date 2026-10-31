@@ -53,17 +53,17 @@ JetBrains Mono only for project numbers and the `</>` chip on the view switch.
 ## Page, top to bottom
 
 1. **Header** (sticky, 76px, blurred paper background; the bottom rule
-   appears once the page scrolls). No avatar. Name with "Software Engineer"
+   appears once the page scrolls). No avatar. Name with "Frontend Engineer"
    under it on the left. Work, Experience, Contact links on the right
    (desktop only), the current one with a leaf underline. Then an outlined
    "Résumé ↗" button, which opens the résumé the same way as the hero
    button. Chosen from [header-options.html](header-options.html), option B.
-2. **Hero**. "Open to work" pill and "Software Engineer".
+2. **Hero**. "Open to work" pill on its own (the header already shows the title).
    Headline "I build websites and apps people *enjoy* using." up to 104px.
    Lede and buttons on one row under it: "View résumé →" (leaf, filled),
    "Email me" (white, outlined), LinkedIn and GitHub as text links. No photo.
-3. **Facts strip**. Four facts on a white band: 4+ years, 4 products, Remote,
-   Full-time.
+3. **Facts strip**. Four facts on a white band: years shipping (from the start
+   date), React (with Next.js and TypeScript), Remote, Full-time.
 4. **Selected work**. Heading "Products people *use* every day". One row per
    project, screenshot and text alternating sides. Screenshot in a white
    frame with three grey dots and a soft shadow. Text: number, name, tag
@@ -93,7 +93,7 @@ corner of the screen in both views, so the header stays about the person.
 
 ## Phones (under 860px)
 
-- Header 68px, name and "Software Engineer" stay, nav hidden, "Résumé"
+- Header 68px, name and "Frontend Engineer" stay, nav hidden, "Résumé"
   button on the right.
 - Hero: 40px top padding. Buttons are two equal halves, links below.
 - Facts: 2×2 grid with row lines only, on the page background.

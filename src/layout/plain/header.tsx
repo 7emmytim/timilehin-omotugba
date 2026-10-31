@@ -38,7 +38,7 @@ export function Header() {
             Timilehin Omotugba
           </span>
           <span className="block truncate text-[13px] text-ink-60">
-            Software Engineer
+            Frontend Engineer
           </span>
         </a>
 

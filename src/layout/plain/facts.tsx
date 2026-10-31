@@ -1,11 +1,10 @@
-import projects from "@/data/projects.json";
 import { yearsShipping } from "@/lib";
 import { WRAP } from "./shared";
 
 const FACTS = [
   { value: `${yearsShipping()}+ years`, label: "building for the web" },
-  { value: `${projects.length} products`, label: "live and in use" },
-  { value: "Remote", label: "or on site in Abuja" },
+  { value: "React", label: "with Next.js and TypeScript" },
+  { value: "Remote", label: "or on site" },
   { value: "Full-time", label: "or contract roles" },
 ];
 

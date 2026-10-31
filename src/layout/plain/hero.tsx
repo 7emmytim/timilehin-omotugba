@@ -27,7 +27,6 @@ export function Hero() {
             />
             Open to work
           </span>
-          <span>Software Engineer</span>
         </p>
 
         <h1 className="m-0 max-w-[15ch] text-[clamp(44px,7.6vw,104px)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-ink">
@@ -41,7 +40,7 @@ export function Hero() {
             className="m-0 max-w-[40ch] text-[clamp(19px,1.9vw,23px)] leading-[1.45] tracking-[-0.01em] text-ink-60"
           >
             {yearsInWords({ capitalize: true })} years shipping real products for trading,
-            healthcare and research teams. Currently at AFEX.
+            healthcare and research teams.
           </p>
 
           {/* Phones: two equal buttons, links on their own line underneath. */}

@@ -4,7 +4,10 @@
         "company": "AFEX",
         "image": "africa-exchange",
         "url": "https://africaexchange.com/",
-        "tags": ["Trading", "AFEX", "2021 – now"],
+        "tags": [
+            "Trading",
+            "AFEX"
+        ],
         "description": "A marketplace where farmers, processors and investors buy and sell agricultural commodities across Africa.",
         "role": "built and maintain the screens traders use every day, and made them faster."
     },
@@ -13,7 +16,10 @@
         "company": "Helpa",
         "image": "helpa-v2",
         "url": "https://helpa.me/",
-        "tags": ["Healthcare", "Charity"],
+        "tags": [
+            "Healthcare",
+            "Charity"
+        ],
         "description": "A platform where NGOs raise money for patients, and donors give in their own currency.",
         "role": "built the donation flow, the page builder NGOs use, and sign-in for four kinds of users."
     },
@@ -22,7 +28,10 @@
         "company": "NICRAT",
         "image": "gms",
         "url": "https://nicrat.sydfunds.com/",
-        "tags": ["Research", "NICRAT"],
+        "tags": [
+            "Research",
+            "NICRAT"
+        ],
         "description": "Lets a national research institute publish funding calls, take applications and award grants in one place.",
         "role": "built the application and review screens."
     },
@@ -31,7 +40,10 @@
         "company": "Light House Inverter",
         "image": "light-house-inverter",
         "url": "https://www.lighthouseinverter.com/",
-        "tags": ["Solar energy", "Business site"],
+        "tags": [
+            "Solar energy",
+            "Business site"
+        ],
         "description": "The website for a solar and inverter company, showing its products and services to homes and businesses.",
         "role": "designed and built the site."
     }

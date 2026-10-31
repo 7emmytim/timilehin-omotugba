@@ -37,7 +37,7 @@ export function buildSource(): SourceSection[] {
     [t.com("/**")],
     [
       t.com(
-        ` * Software Engineer, Abuja NG. ${yearsShipping()}+ years shipping production React.`,
+        ` * Frontend Engineer (React, Next.js, TypeScript). ${yearsShipping()}+ years shipping production React.`,
       ),
     ],
     [t.com(` * Currently at ${experiences[0].company}. Open to new work.`)],
@@ -52,12 +52,12 @@ export function buildSource(): SourceSection[] {
       t.p(" = {"),
     ],
     [t.p(`${INDENT}name: `), t.str("Timilehin Omotugba"), t.p(",")],
-    [t.p(`${INDENT}role: `), t.str("Software Engineer"), t.p(",")],
+    [t.p(`${INDENT}role: `), t.str("Frontend Engineer"), t.p(",")],
     [
       t.p(`${INDENT}location: `),
-      t.str("Abuja, Nigeria"),
+      t.str("Remote"),
       t.p(", "),
-      t.com("// remote-friendly"),
+      t.com("// or on site"),
     ],
     [t.p(`${INDENT}yearsShipping: `), t.num(yearsShipping()), t.p(",")],
     [t.p(`${INDENT}available: `), t.lit("true"), t.p(",")],
@@ -87,14 +87,17 @@ export function buildSource(): SourceSection[] {
         t.str(title),
         t.p(","),
       ]);
+      // Type and duration are optional in the data; leave the field out if unset.
       experienceLines.push([
-        t.p(`${INDENT.repeat(2)}type: `),
-        t.str(type),
-        t.p(", location: "),
+        t.p(INDENT.repeat(2)),
+        ...(type ? [t.p("type: "), t.str(type), t.p(", ")] : []),
+        t.p("location: "),
         t.str(location),
         t.p(","),
       ]);
-      experienceLines.push([t.p(`${INDENT.repeat(2)}duration: `), t.str(duration), t.p(",")]);
+      if (duration) {
+        experienceLines.push([t.p(`${INDENT.repeat(2)}duration: `), t.str(duration), t.p(",")]);
+      }
       experienceLines.push([t.p(`${INDENT.repeat(2)}shipped: [`)]);
       sentences(description).forEach((sentence) => {
         experienceLines.push([t.p(INDENT.repeat(3)), t.str(sentence), t.p(",")]);
