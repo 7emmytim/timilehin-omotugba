@@ -85,6 +85,19 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* The server always renders the plain page. For a visitor coming back in dev
+   mode, keep it hidden until React has swapped in the editor, so the plain
+   page never flashes. If JavaScript never runs, show it after 2s anyway. */
+html[data-mode="dev"]:not([data-ready]) #__next {
+  visibility: hidden;
+  animation: reveal-anyway 0s 2s forwards;
+}
+@keyframes reveal-anyway {
+  to {
+    visibility: visible;
+  }
+}
+
 /* So the reserved gutter and any scrollbar track are dark in the editor. */
 html[data-mode="dev"] {
   color-scheme: dark;
