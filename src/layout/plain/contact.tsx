@@ -4,7 +4,10 @@ import { WRAP } from "./shared";
 
 const CHANNELS = [
   { label: "+234 916 406 2040", href: "tel:+2349164062040" },
-  { label: "LinkedIn ↗", href: "https://www.linkedin.com/in/timilehin-omotugba/" },
+  {
+    label: "LinkedIn ↗",
+    href: "https://www.linkedin.com/in/timilehin-omotugba/",
+  },
   { label: "GitHub ↗", href: "https://github.com/7emmytim" },
 ];
 
@@ -42,13 +45,18 @@ export function Contact() {
             omotugbatimilehin7@gmail.com →
           </Link>
 
-          <ul role="list" className="m-0 mt-7 flex list-none flex-wrap gap-x-5 gap-y-2.5 p-0 text-sm text-fg/60 min-[860px]:mt-10 min-[860px]:gap-x-7 min-[860px]:text-[15px]">
+          <ul
+            role="list"
+            className="m-0 mt-7 flex list-none flex-wrap gap-x-5 gap-y-2.5 p-0 text-sm text-fg/60 min-[860px]:mt-10 min-[860px]:gap-x-7 min-[860px]:text-[15px]"
+          >
             {CHANNELS.map(({ label, href }) => (
               <li key={href}>
                 <Link
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  rel={
+                    href.startsWith("http") ? "noopener noreferrer" : undefined
+                  }
                   className="transition-colors hover:text-fg"
                 >
                   {label}
@@ -70,11 +78,12 @@ export function Contact() {
         <figure className="m-0 hidden w-[clamp(220px,24vw,300px)] min-[860px]:block">
           <span className="relative block aspect-[4/5] overflow-hidden rounded-[20px]">
             <Image
-              src="/timilehin.png"
+              src="/timilehin.jpg"
               alt="Timilehin Omotugba"
               fill
               sizes="300px"
-              className="object-cover object-[center_25%]"
+              // Already cropped to 4:5, so nothing gets cut off here.
+              className="object-cover"
             />
           </span>
           <figcaption className="mt-3 text-[13.5px] text-fg/60">
