@@ -59,10 +59,17 @@ export function ModeProvider({ children }: { children: ReactNode }) {
     setReady(true);
   }, [setMode]);
 
-  // The page background lives on <html> (see globals.css), so it follows the mode.
+  // The page background lives on <html> (see globals.css), so it follows the
+  // mode. The script in _document set it before paint; waiting for `ready`
+  // keeps the first render (always reader) from flipping it back to light.
+  // data-ready also reveals the page, which globals.css hides for dev mode
+  // until now.
   useEffect(() => {
-    document.documentElement.dataset.mode = mode;
-  }, [mode]);
+    if (!ready) return;
+    const root = document.documentElement;
+    root.dataset.mode = mode;
+    root.dataset.ready = "";
+  }, [mode, ready]);
 
   return (
     <ModeContext.Provider value={{ mode, setMode, ready }}>
