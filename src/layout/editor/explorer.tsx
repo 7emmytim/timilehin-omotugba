@@ -1,4 +1,5 @@
-import { useMode, useNav } from "@/context";
+import { useState } from "react";
+import { useNav } from "@/context";
 import experiences from "@/data/experiences.json";
 import projects from "@/data/projects.json";
 
@@ -21,6 +22,7 @@ function NavRow({
   ink,
   meta,
   nested,
+  marksActive = true,
 }: {
   id: string;
   label: string;
@@ -28,9 +30,11 @@ function NavRow({
   ink: string;
   meta?: string;
   nested?: boolean;
+  /** Off for outline rows, so the file row alone shows where you are. */
+  marksActive?: boolean;
 }) {
   const { active, goTo, openFile } = useNav();
-  const on = id === active && openFile === "doc";
+  const on = marksActive && id === active && openFile === "doc";
 
   return (
     <button
@@ -50,63 +54,52 @@ function NavRow({
   );
 }
 
-/** A static row: not navigation, just texture. */
-function StaticRow({
-  label,
-  icon,
-  ink,
-  meta,
-  nested,
-}: {
-  label: string;
-  icon: string;
-  ink: string;
-  meta?: string;
-  nested?: boolean;
-}) {
-  return (
-    <div className={`${ROW} ${nested ? "pl-8" : "pl-4"}`}>
-      <span className={`w-4 flex-none text-center text-[11px] ${ink}`}>
-        {icon}
-      </span>
-      {label}
-      {meta && <span className="ml-auto text-[10.5px] text-mute">{meta}</span>}
-    </div>
-  );
-}
-
 export function Explorer() {
-  const { mode } = useMode();
-  const { items, openFile, openResume } = useNav();
+  const { items, openFile, openResume, showContact } = useNav();
+  const [srcOpen, setSrcOpen] = useState(true);
 
   const counts: Record<string, string> = {
-    experience: `${experiences.length} roles`,
-    work: `${projects.length}`,
     "file-experience": `${experiences.length}`,
     "file-projects": `${projects.length}`,
   };
 
   return (
     <aside className="hidden overflow-y-auto border-r border-hair bg-side py-2.5 text-fg editor-scroll lg:block">
-      <Heading>
-        {mode === "dev" ? "Explorer: portfolio" : "Timilehin Omotugba"}
-      </Heading>
+      <Heading>Explorer: portfolio</Heading>
 
-      {mode === "dev" && (
-        <StaticRow label="src" icon="▾" ink="text-[#c09553]" />
-      )}
+      <button
+        type="button"
+        onClick={() => setSrcOpen((open) => !open)}
+        aria-expanded={srcOpen}
+        aria-controls="explorer-src"
+        className={`${ROW} cursor-pointer pl-4 hover:bg-hover`}
+      >
+        <span className="w-4 flex-none text-center text-[11px] text-[#c09553]">
+          {srcOpen ? "▾" : "▸"}
+        </span>
+        src
+      </button>
 
-      {items.map((item) => (
-        <NavRow
-          key={item.id}
-          {...item}
-          meta={counts[item.id]}
-          nested={mode === "dev"}
-        />
-      ))}
+      {srcOpen && (
+        <div id="explorer-src">
+          {items.map((item) => (
+            <NavRow key={item.id} {...item} meta={counts[item.id]} nested />
+          ))}
 
-      {mode === "dev" && (
-        <StaticRow label="contact.ts" icon="TS" ink="text-s-blue" nested />
+          {/* Not a real file: the contact details are the terminal output,
+              so this opens the terminal and lands on them. */}
+          <button
+            type="button"
+            onClick={showContact}
+            title="Show contact details in the terminal"
+            className={`${ROW} cursor-pointer pl-8 hover:bg-hover`}
+          >
+            <span className="w-4 flex-none text-center text-[11px] text-s-blue">
+              TS
+            </span>
+            contact.ts
+          </button>
+        </div>
       )}
 
       <button
@@ -120,28 +113,33 @@ export function Explorer() {
         <span className="w-4 flex-none text-center text-[11px] text-[#e06c75]">
           ▤
         </span>
-        {mode === "dev" ? "resume.pdf" : "Résumé (PDF)"}
+        resume.pdf
       </button>
 
       <div className="pt-4">
-        <Heading>{mode === "dev" ? "Outline" : "Where I've worked"}</Heading>
-        {mode === "dev" ? (
-          <>
-            <StaticRow label="Developer" icon="◈" ink="text-s-blue" />
-            <StaticRow label="experience[]" icon="ƒ" ink="text-s-fn" />
-            <StaticRow label="projects[]" icon="ƒ" ink="text-s-fn" />
-          </>
-        ) : (
-          experiences.map(({ company, duration }) => (
-            <StaticRow
-              key={company}
-              label={company}
-              icon="●"
-              ink="text-accent"
-              meta={duration.split(" - ")[0]}
-            />
-          ))
-        )}
+        <Heading>Outline</Heading>
+        {/* Symbols jump to the same places as their files. */}
+        <NavRow
+          id="file-timilehin"
+          label="Developer"
+          icon="◈"
+          ink="text-s-blue"
+          marksActive={false}
+        />
+        <NavRow
+          id="file-experience"
+          label="experience[]"
+          icon="ƒ"
+          ink="text-s-fn"
+          marksActive={false}
+        />
+        <NavRow
+          id="file-projects"
+          label="projects[]"
+          icon="ƒ"
+          ink="text-s-fn"
+          marksActive={false}
+        />
       </div>
     </aside>
   );

@@ -15,7 +15,7 @@ export type NavItem = { id: string; label: string; icon: string; ink: string };
 
 const READER: NavItem[] = [
   { id: "about", label: "About", icon: "◆", ink: "text-accent" },
-  { id: "work", label: "Selected work", icon: "◆", ink: "text-accent" },
+  { id: "work", label: "Work", icon: "◆", ink: "text-accent" },
   { id: "experience", label: "Experience", icon: "◆", ink: "text-accent" },
   { id: "contact", label: "Contact", icon: "◆", ink: "text-accent" },
 ];
@@ -36,6 +36,13 @@ type NavContextValue = {
   openFile: OpenFile;
   openResume: () => void;
   closeResume: () => void;
+  /** The editor's terminal panel, which holds the contact details. */
+  terminalOpen: boolean;
+  setTerminalOpen: (open: boolean) => void;
+  /** Set by showContact; the terminal focuses its first link, then clears it. */
+  contactPending: boolean;
+  showContact: () => void;
+  contactShown: () => void;
   /** Attached by EditorShell to the one element that scrolls. */
   scrollerRef: RefObject<HTMLDivElement | null>;
 };
@@ -57,20 +64,35 @@ export function NavProvider({ children }: { children: ReactNode }) {
    */
   const muteSpyUntil = useRef(0);
 
-  useEffect(() => setActive(items[0].id), [items]);
+  // A mode switch starts fresh: back to the first section, and the résumé
+  // tab closes, since the plain page has no editor tab to show it in.
+  useEffect(() => {
+    setActive(items[0].id);
+    setOpenFile("doc");
+  }, [items]);
 
   const scrollToId = useCallback(
     (id: string) => {
+      // No pane means the plain page, where the window scrolls.
       const scroller = scrollerRef.current;
-      const target = scroller?.querySelector<HTMLElement>(`#${CSS.escape(id)}`);
-      if (!scroller || !target) return false;
+      const target = (scroller ?? document).querySelector<HTMLElement>(
+        `#${CSS.escape(id)}`,
+      );
+      if (!target) return false;
 
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const behavior = reduced ? "auto" : "smooth";
       muteSpyUntil.current = Date.now() + (reduced ? 120 : 900);
-      scroller.scrollTo({
-        top: target.offsetTop - scroller.offsetTop - 8,
-        behavior: reduced ? "auto" : "smooth",
-      });
+
+      if (scroller) {
+        scroller.scrollTo({
+          top: target.offsetTop - scroller.offsetTop - 8,
+          behavior,
+        });
+      } else {
+        // html's scroll-padding-top (globals.css) clears the sticky header.
+        target.scrollIntoView({ behavior, block: "start" });
+      }
       return true;
     },
     [scrollerRef],
@@ -115,13 +137,26 @@ export function NavProvider({ children }: { children: ReactNode }) {
   const openResume = useCallback(() => setOpenFile("resume"), []);
   const closeResume = useCallback(() => setOpenFile("doc"), []);
 
+  const [terminalOpen, setTerminalOpen] = useState(true);
+  const [contactPending, setContactPending] = useState(false);
+  // The terminal is hidden while the résumé is open, so go back to the code too.
+  const showContact = useCallback(() => {
+    setOpenFile("doc");
+    setTerminalOpen(true);
+    setContactPending(true);
+  }, []);
+  const contactShown = useCallback(() => setContactPending(false), []);
+
   // Scroll spy: the active tab follows where the reader actually is.
   useEffect(() => {
+    if (openFile !== "doc") return;
+    // Null on the plain page: the observer then watches the viewport.
     const scroller = scrollerRef.current;
-    if (!scroller || openFile !== "doc") return;
 
     const targets = items
-      .map(({ id }) => scroller.querySelector<HTMLElement>(`#${CSS.escape(id)}`))
+      .map(({ id }) =>
+        (scroller ?? document).querySelector<HTMLElement>(`#${CSS.escape(id)}`),
+      )
       .filter((el): el is HTMLElement => Boolean(el));
     if (!targets.length) return;
 
@@ -144,17 +179,21 @@ export function NavProvider({ children }: { children: ReactNode }) {
     // never call it current. At the bottom of the scroll, it always is.
     const onScroll = () => {
       if (Date.now() < muteSpyUntil.current) return;
-      const remaining =
-        scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight;
+      const remaining = scroller
+        ? scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight
+        : document.documentElement.scrollHeight -
+          window.scrollY -
+          window.innerHeight;
       if (remaining < 4) setActive(items[items.length - 1].id);
     };
 
-    scroller.addEventListener("scroll", onScroll, { passive: true });
+    const scrollTarget = scroller ?? window;
+    scrollTarget.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
     return () => {
       observer.disconnect();
-      scroller.removeEventListener("scroll", onScroll);
+      scrollTarget.removeEventListener("scroll", onScroll);
     };
   }, [items, scrollerRef, openFile]);
 
@@ -167,6 +206,11 @@ export function NavProvider({ children }: { children: ReactNode }) {
         openFile,
         openResume,
         closeResume,
+        terminalOpen,
+        setTerminalOpen,
+        contactPending,
+        showContact,
+        contactShown,
         scrollerRef,
       }}
     >

@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
-import { useMode, useNav } from "@/context";
+import { useNav } from "@/context";
 
 export function TabStrip() {
-  const { mode } = useMode();
   const { items, active, goTo, openFile, openResume, closeResume } = useNav();
   const stripRef = useRef<HTMLDivElement>(null);
 
@@ -79,14 +78,9 @@ export function TabStrip() {
           <>
             <em className="text-accent not-italic">resume.pdf</em>
           </>
-        ) : mode === "dev" ? (
-          <>
-            src <span aria-hidden="true">›</span>{" "}
-            <em className="text-accent not-italic">{current.label}</em>
-          </>
         ) : (
           <>
-            Timilehin Omotugba <span aria-hidden="true">›</span>{" "}
+            src <span aria-hidden="true">›</span>{" "}
             <em className="text-accent not-italic">{current.label}</em>
           </>
         )}

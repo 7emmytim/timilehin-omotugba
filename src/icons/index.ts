@@ -1,3 +1,5 @@
+export * from "./arrow-left";
+export * from "./code";
 export * from "./document";
 export * from "./github";
 export * from "./linkedin";

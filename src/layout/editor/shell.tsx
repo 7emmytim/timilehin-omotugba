@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useNav } from "@/context";
+import { ViewSwitchButton } from "@/layout/common/view-switch-button";
 import { ActivityBar } from "./activity-bar";
 import { Explorer } from "./explorer";
 import { Minimap } from "./minimap";
@@ -23,6 +24,7 @@ export function EditorShell({
 
   return (
     <>
+      <ViewSwitchButton />
       <div className="grid h-[100dvh] grid-rows-[auto_minmax(0,1fr)_auto_auto] overflow-hidden bg-editor">
         <TitleBar />
 

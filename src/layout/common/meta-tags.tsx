@@ -1,24 +1,36 @@
 import Head from "next/head";
+import { yearsInWords } from "@/lib";
+
+/**
+ * The page says "Frontend Engineer" so it doesn't box the role in. The
+ * search-facing text names the stack, so searches for React, Next.js or
+ * TypeScript engineers can still find the page.
+ */
+const TITLE = "Timilehin Omotugba | Frontend Engineer, React & TypeScript";
+const STACK = ["React", "Next.js", "TypeScript", "Tailwind CSS"];
 
 export function MetaTags() {
+  const shareDescription = `Frontend engineer in Abuja, Nigeria. ${yearsInWords({ capitalize: true })} years building websites and apps with React, Next.js and TypeScript for trading, healthcare and research teams. Turn on dev mode to read the site as source.`;
+
   return (
     <Head>
       {/* Primary Meta Tags */}
-      <title>Timilehin Omotugba | Frontend Developer</title>
+      <title>{TITLE}</title>
 
       {/* Google Site Verification */}
       <meta
         name="google-site-verification"
         content="BhuT7hhwmAmBNPhB6QyJ2GPWCuGYPFgfdCaZDyHJ_So"
       />
-      <meta name="title" content="Timilehin Omotugba | Frontend Developer" />
+      <meta name="title" content={TITLE} />
       <meta
         name="description"
-        content="Frontend developer with four years shipping production React. I build responsive, performant interfaces with Next.js, TypeScript and Tailwind CSS."
+        content={`Frontend engineer in Abuja, Nigeria, building with React, Next.js and TypeScript. ${yearsInWords({ capitalize: true })} years shipping production apps for trading, healthcare and research teams.`}
       />
+      {/* The spellings people actually type, not just the official names. */}
       <meta
         name="keywords"
-        content="Timilehin Omotugba, Frontend Developer, React, Next.js, TypeScript, Tailwind CSS, Abuja, Nigeria, Portfolio"
+        content="Timilehin Omotugba, Frontend Engineer, React Engineer, React Developer, ReactJS, Next.js Developer, NextJS, TypeScript Developer, React, Next.js, TypeScript, Tailwind CSS, SaaS, Frontend Developer, Software Engineer, Abuja, Nigeria, Portfolio"
       />
       <meta name="author" content="Timilehin Omotugba" />
       <meta name="robots" content="index, follow" />
@@ -29,11 +41,11 @@ export function MetaTags() {
       <meta property="og:url" content="https://www.timilehinomotugba.com" />
       <meta
         property="og:title"
-        content="Timilehin Omotugba | Frontend Developer"
+        content={TITLE}
       />
       <meta
         property="og:description"
-        content="A portfolio built like a code editor. Read it as plain text, or flip to dev mode and read it as source."
+        content={shareDescription}
       />
       <meta
         property="og:image"
@@ -43,7 +55,7 @@ export function MetaTags() {
       <meta property="og:image:height" content="630" />
       <meta
         property="og:image:alt"
-        content="Timilehin Omotugba, Frontend Developer"
+        content="Timilehin Omotugba, Frontend Engineer"
       />
 
       {/* Twitter */}
@@ -54,11 +66,11 @@ export function MetaTags() {
       />
       <meta
         property="twitter:title"
-        content="Timilehin Omotugba | Frontend Developer"
+        content={TITLE}
       />
       <meta
         property="twitter:description"
-        content="A portfolio built like a code editor. Read it as plain text, or flip to dev mode and read it as source."
+        content={shareDescription}
       />
       <meta
         property="twitter:image"
@@ -97,14 +109,15 @@ export function MetaTags() {
             name: "Timilehin Omotugba",
             url: "https://timilehinomotugba.com",
             image: "https://timilehinomotugba.com/avatar.png",
-            jobTitle: "Frontend Developer",
+            jobTitle: "Frontend Engineer",
+            knowsAbout: STACK,
             address: {
               "@type": "PostalAddress",
               addressLocality: "Abuja",
               addressCountry: "NG",
             },
             description:
-              "Frontend developer building clean, responsive, performant web applications with React and Next.js.",
+              "Frontend engineer building clean, responsive, performant web applications with React, Next.js and TypeScript.",
             sameAs: [
               "https://github.com/7emmytim",
               "https://www.linkedin.com/in/timilehin-omotugba",
