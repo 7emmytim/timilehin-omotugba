@@ -16,7 +16,7 @@ export function Hero() {
     // id="about" is the first nav item; the header name scrolls here.
     <section
       id="about"
-      className="pt-10 pb-11 min-[860px]:pt-[clamp(64px,10vw,136px)] min-[860px]:pb-[clamp(48px,7vw,88px)]"
+      className="pt-10 pb-11 min-[860px]:pt-[clamp(48px,6vw,88px)] min-[860px]:pb-[clamp(48px,7vw,88px)]"
     >
       <div className={WRAP}>
         <p className="m-0 mb-[22px] flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[15px] text-ink-60 min-[860px]:mb-8">
