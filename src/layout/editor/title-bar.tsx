@@ -1,4 +1,13 @@
+import { useNav } from "@/context";
+
 export function TitleBar() {
+  const { items, active, openFile } = useNav();
+  // Like a real editor, the title names the file in front of you.
+  const file =
+    openFile === "resume"
+      ? "resume.pdf"
+      : (items.find((item) => item.id === active) ?? items[0]).label;
+
   return (
     <div className="flex h-[38px] items-center gap-[10px] border-b border-hair bg-title px-3 text-xs text-mute">
       <span className="flex flex-none gap-2" aria-hidden="true">
@@ -8,7 +17,7 @@ export function TitleBar() {
       </span>
 
       <span className="hidden flex-1 items-center justify-center truncate font-mono md:flex">
-        timilehin.ts / timilehin-omotugba
+        {file} / timilehin-omotugba
       </span>
 
       {/* Balances the traffic lights so the title stays centred. The view
