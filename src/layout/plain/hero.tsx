@@ -39,8 +39,8 @@ export function Hero() {
             suppressHydrationWarning
             className="m-0 max-w-[40ch] text-[clamp(19px,1.9vw,23px)] leading-[1.45] tracking-[-0.01em] text-ink-60"
           >
-            {yearsInWords({ capitalize: true })} years shipping real products for trading,
-            healthcare and research teams.
+            {yearsInWords({ capitalize: true })} years shipping SaaS products and
+            platforms for trading, healthcare and research teams.
           </p>
 
           {/* Phones: two equal buttons, links on their own line underneath. */}

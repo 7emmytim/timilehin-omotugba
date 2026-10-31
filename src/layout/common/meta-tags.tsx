@@ -30,7 +30,7 @@ export function MetaTags() {
       {/* The spellings people actually type, not just the official names. */}
       <meta
         name="keywords"
-        content="Timilehin Omotugba, Frontend Engineer, React Engineer, React Developer, ReactJS, Next.js Developer, NextJS, TypeScript Developer, React, Next.js, TypeScript, Tailwind CSS, Frontend Developer, Software Engineer, Abuja, Nigeria, Portfolio"
+        content="Timilehin Omotugba, Frontend Engineer, React Engineer, React Developer, ReactJS, Next.js Developer, NextJS, TypeScript Developer, React, Next.js, TypeScript, Tailwind CSS, SaaS, Frontend Developer, Software Engineer, Abuja, Nigeria, Portfolio"
       />
       <meta name="author" content="Timilehin Omotugba" />
       <meta name="robots" content="index, follow" />
