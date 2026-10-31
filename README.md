@@ -24,6 +24,27 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Project screenshots
+
+The images in Selected work are taken from each project's live site, listed
+in `src/data/projects.json`. To refresh them after a site changes:
+
+```bash
+npx playwright install chromium   # once per machine
+yarn screenshots                  # every project
+yarn screenshots helpa-v2         # one project, by its "image" name
+```
+
+They're saved to `public/images/<image>.png`. If a site fails to load, its
+old screenshot is kept and the command ends with an error naming it. Check
+the new images before committing, in case a site showed a cookie banner or a
+loading screen.
+
+Per-site settings live at the top of `scripts/screenshots.mjs`: elements to
+hide before capturing, or a reason to skip a site. Africa Exchange is
+skipped because its image server blocks automated browsers, so its
+screenshot is updated by hand.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
