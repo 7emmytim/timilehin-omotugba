@@ -69,7 +69,7 @@ Out of scope:
   strip, line-number gutter, minimap and status bar.
 - Body text, headings and buttons use the regular sans-serif font, with a
   serif italic for one accent word per heading. Monospace appears only as
-  small detail: project numbers and the toggle's `dev` label on phones.
+  small detail: project numbers and the `</>` chip on the view switch.
 - The page scrolls as a normal page (the window scrolls), not inside a fixed
   pane. Browser back/forward and anchor links work.
 - A sticky header with the name and links to Work, Experience and Contact
@@ -81,10 +81,10 @@ Out of scope:
   chips are dropped from the plain page; they stay in the dev view.
 - Year counts ("N years") are worked out from the January 2021 start date,
   not typed in, so they stay correct.
-- The Dev mode toggle is visible without scrolling on desktop and phone, and
-  has a text label, not only an icon.
-- The editor view shows the same toggle switched on; turning it off returns
-  to the plain page.
+- A floating "View as code" button is always visible in the bottom-right
+  corner on desktop and phone, with a text label, not only an icon.
+- The editor view shows the same button as "Simple view", which returns to
+  the plain page. It never covers the footer.
 - The chosen view still persists in localStorage the way it does today, and
   first-time visitors still get reader mode.
 - `?view=code` opens the editor view and `?view=simple` opens the plain page,
@@ -118,7 +118,9 @@ Out of scope:
 
 6. Changed during Design: the view switch is a "Dev mode" on/off toggle,
    used in both views, instead of a "View as code" button and a separate
-   "Simple view" button.
+   "Simple view" button. Changed again after review: the toggle
+   became a floating button in the bottom-right corner, and the header lost
+   the avatar and gained a "Résumé" button (header option B).
 7. Changed during Design: experience entries get one plain-language
    sentence each instead of clamped long descriptions, and projects get a
    "What I did" line. The long descriptions stay in the data for the dev view.

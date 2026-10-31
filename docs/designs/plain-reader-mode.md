@@ -22,7 +22,8 @@ Rejected along the way, kept for reference:
 - [editorial-mockup.html](editorial-mockup.html): the dark version with a
   hero photo.
 - [switch-options.html](switch-options.html): three switch designs (toggle,
-  floating button, nav link). The toggle won.
+  floating button, nav link). The toggle was built first, then replaced by
+  the floating button.
 
 ## Tokens
 
@@ -47,13 +48,16 @@ The contact panel reuses the editor's dark `editor` background and Sage
 
 Fonts: Instrument Sans for everything, Instrument Serif italic for one
 accent word per heading ("enjoy", "use", "worked", "Let's talk."),
-JetBrains Mono only for project numbers and the switch's `dev` label.
+JetBrains Mono only for project numbers and the `</>` chip on the view switch.
 
 ## Page, top to bottom
 
-1. **Header** (sticky, 68px, blurred paper background, bottom rule). Avatar
-   and name on the left. Work, Experience, Contact links (desktop only).
-   The Dev mode toggle on the right.
+1. **Header** (sticky, 76px, blurred paper background; the bottom rule
+   appears once the page scrolls). No avatar. Name with "Frontend developer,
+   Abuja" under it on the left. Work, Experience, Contact links on the right
+   (desktop only), the current one with a leaf underline. Then an outlined
+   "Résumé ↗" button, which opens the résumé the same way as the hero
+   button. Chosen from [header-options.html](header-options.html), option B.
 2. **Hero**. "Open to work" pill and "Frontend developer · Abuja, Nigeria".
    Headline "I build websites and apps people *enjoy* using." up to 104px.
    Lede and buttons on one row under it: "View résumé →" (leaf, filled),
@@ -73,19 +77,24 @@ JetBrains Mono only for project numbers and the switch's `dev` label.
    only.
 7. **Footer**. Copyright and "Prefer code? View as code →".
 
-## Dev mode toggle
+## View switch (floating button)
 
-A labelled on/off switch (`role="switch"`). Label "Dev mode" on desktop,
-`dev` in mono on phones. 38×22 track, white knob with a tiny `</>`.
+Replaces the earlier Dev mode toggle. A pill fixed to the bottom-right
+corner of the screen in both views, so the header stays about the person.
 
-- Plain page: off, grey track. Turning it on opens the editor view.
-- Editor title bar: the same toggle, on, Sage track. Turning it off returns
-  to the plain page. It replaces the old two-icon `ModeSwitch`.
-- Title text: "See this page as the source code a developer would read".
+- Plain page: dark pill (editor background) with a green `</>` chip and
+  "View as code". On phones the label shortens to "Code", not a bare icon, so
+  it isn't mistaken for a chat bubble.
+- Editor: the same pill in light colours, "← Simple view". The editor's title
+  bar loses its toggle.
+- It sits right after the header in the DOM, so keyboard users reach it
+  early. The footer's "View as code" link stays as a second way in.
+- The page footer gets extra bottom space so the pill never covers it.
 
 ## Phones (under 860px)
 
-- Header 60px, name stays, nav hidden, toggle shows `dev`.
+- Header 68px, name and "Frontend developer" stay, nav hidden, "Résumé"
+  button on the right.
 - Hero: 40px top padding. Buttons are two equal halves, links below.
 - Facts: 2×2 grid with row lines only, on the page background.
 - Projects stack, screenshot first, 4:3 crop anchored top-left so the
@@ -108,7 +117,7 @@ A labelled on/off switch (`role="switch"`). Label "Dev mode" on desktop,
 - All text pairs above meet AA (checked with the WCAG formula).
 - One `h1`, `h2` per section, `h3` per project and role.
 - Landmarks: header, nav, main, footer.
-- The toggle has a text label and `aria-checked`.
+- The view switch is a button with a text label on every screen size.
 - Focus ring visible on every control. Reduced motion turns off smooth
   scrolling and the screenshot hover lift.
 

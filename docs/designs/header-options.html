@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Header options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* Static comparison of three header designs, each with the floating
+     "View as code" button, at desktop and 375px. Not used by the app.
+     Images load from the site root, so open it through the dev server. */
+  :root {
+    --paper: #f7f6f2; --raised: #fff; --sunk: #efeee8; --rule: #e4e2db;
+    --ink: #14151a; --ink-60: #5b5f6b; --leaf: #2a6e4c; --leaf-dim: #e7f1eb; --leaf-line: #c5dfd0;
+    --editor: #101117; --fg: #e8eaf0; --sage: #7cc4a0; --sel: #1d202a;
+    --sans: "Instrument Sans", system-ui, sans-serif;
+    --serif: "Instrument Serif", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 40px 32px 80px; background: #e3e2db; font-family: var(--sans); color: var(--ink); }
+  h1 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.02em; }
+  .intro { margin: 0 0 36px; max-width: 90ch; color: var(--ink-60); font-size: 15px; line-height: 1.55; }
+  .option { margin-bottom: 56px; }
+  .option h2 { margin: 0 0 4px; font-size: 18px; }
+  .option p { margin: 0 0 16px; max-width: 86ch; color: var(--ink-60); font-size: 14.5px; line-height: 1.55; }
+  .frames { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+  .frame { position: relative; background: var(--paper); border-radius: 14px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule), 0 10px 30px -14px rgba(0,0,0,.25); }
+  .frame.desk { width: 1040px; height: 430px; }
+  .frame.phone { width: 375px; height: 560px; }
+  .frame.dark { background: var(--editor); }
+  .frame small.cap { position: absolute; left: 14px; bottom: 10px; font-size: 11px; color: var(--ink-60); }
+  .dark small.cap { color: #6a7187; }
+
+  a { color: inherit; text-decoration: none; }
+  .avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex: none; }
+
+  /* shared hero hint so each header is seen in context */
+  .hero { padding: 0 48px; }
+  .phone .hero { padding: 0 20px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--leaf-dim); border: 1px solid var(--leaf-line); color: var(--leaf); font-size: 13px; font-weight: 600; }
+  .pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--leaf); }
+  .hero h3 { margin: 22px 0 0; max-width: 15ch; font-size: 76px; line-height: .98; font-weight: 600; letter-spacing: -0.045em; }
+  .phone .hero h3 { font-size: 44px; }
+  .hero h3 em { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--leaf); }
+
+  /* the floating view switch, same in every option */
+  .fab { position: absolute; right: 24px; bottom: 24px; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 999px; background: var(--editor); color: var(--fg); font: 500 14px var(--sans); box-shadow: 0 10px 28px -10px rgba(16,17,23,.55), 0 0 0 1px rgba(255,255,255,.06) inset; }
+  .fab b { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: var(--sel); color: var(--sage); font: 600 11.5px var(--mono); }
+  .phone .fab { right: 16px; bottom: 16px; padding: 10px 14px 10px 10px; font-size: 13.5px; }
+  /* in the editor it flips to light and takes you back */
+  .fab.back { background: var(--raised); color: var(--ink); box-shadow: 0 10px 28px -10px rgba(0,0,0,.6); }
+  .fab.back b { background: var(--sunk); color: var(--leaf); font-family: var(--sans); font-size: 14px; }
+
+  /* A: floating pill header */
+  .a-wrap { padding: 16px 24px 0; }
+  .a-bar { display: flex; align-items: center; gap: 28px; max-width: 880px; margin: 0 auto; height: 58px; padding: 0 10px 0 14px; border-radius: 999px; background: rgba(255,255,255,.78); backdrop-filter: blur(12px); border: 1px solid var(--rule); box-shadow: 0 6px 24px -14px rgba(20,21,26,.25); }
+  .a-bar .name { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; }
+  .a-bar nav { margin: 0 auto; display: flex; gap: 6px; font-size: 14.5px; color: var(--ink-60); }
+  .a-bar nav a { padding: 8px 14px; border-radius: 999px; }
+  .a-bar nav a.on { background: var(--sunk); color: var(--ink); }
+  .a-cta { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 600; font-size: 14px; }
+  .phone .a-wrap { padding: 12px 12px 0; }
+  .phone .a-bar { height: 54px; gap: 10px; }
+  .phone .a-bar nav { display: none; }
+  .phone .a-bar .a-cta { margin-left: auto; height: 38px; padding: 0 14px; }
+  .a-hero { padding-top: 56px; }
+  .phone .a-hero { padding-top: 36px; }
+
+  /* B: name and role on the left, links and résumé on the right */
+  .b-bar { display: flex; align-items: center; gap: 32px; height: 76px; padding: 0 48px; }
+  .b-who { display: flex; align-items: center; gap: 12px; }
+  .b-who span { display: block; font-weight: 600; font-size: 15.5px; line-height: 1.2; }
+  .b-who small { display: block; font-size: 13px; color: var(--ink-60); }
+  .b-bar nav { margin-left: auto; display: flex; gap: 28px; font-size: 14.5px; color: var(--ink-60); }
+  .b-bar nav a.on { color: var(--ink); box-shadow: 0 2px 0 var(--leaf); padding-bottom: 4px; }
+  .b-cta { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink); font-weight: 600; font-size: 14px; }
+  .phone .b-bar { padding: 0 20px; height: 68px; gap: 12px; }
+  .phone .b-bar nav { display: none; }
+  .phone .b-cta { margin-left: auto; height: 36px; padding: 0 13px; font-size: 13.5px; }
+  .b-hero { padding-top: 40px; }
+  .phone .b-hero { padding-top: 28px; }
+
+  /* C: editorial masthead, name centred in the serif */
+  .c-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 76px; padding: 0 48px; border-bottom: 1px solid var(--ink); }
+  .c-bar nav { display: flex; gap: 26px; font-size: 14.5px; color: var(--ink-60); }
+  .c-bar nav a.on { color: var(--ink); }
+  .c-name { font-family: var(--serif); font-size: 30px; letter-spacing: -0.01em; }
+  .c-name em { font-style: italic; color: var(--leaf); }
+  .c-right { justify-self: end; font-size: 14.5px; font-weight: 600; color: var(--leaf); border-bottom: 1px solid var(--leaf-line); padding-bottom: 2px; }
+  .phone .c-bar { grid-template-columns: 1fr auto; padding: 0 20px; height: 64px; }
+  .phone .c-bar nav { display: none; }
+  .phone .c-name { font-size: 24px; }
+  .c-hero { padding-top: 44px; }
+  .phone .c-hero { padding-top: 30px; }
+</style>
+</head>
+<body>
+  <h1>Header options, with the floating "View as code" button</h1>
+  <p class="intro">The Dev mode toggle leaves the header and becomes a dark pill fixed to the bottom-right corner (a <code>&lt;/&gt;</code> chip plus "View as code"; on phones it keeps a short "Code" label so it doesn't read as a chat bubble). In the editor the same button turns light and says "Simple view". Each header option below is shown at the top of the page, desktop and 375px.</p>
+
+  <section class="option">
+    <h2>A. Floating pill header (recommended)</h2>
+    <p>The header detaches from the edges and becomes a rounded, frosted bar. The current section gets a soft highlight. With the toggle gone, the right side gets one clear action, "Email me", so a recruiter can act from anywhere on the page. It's the most current-looking of the three, and the Dribbble and Awwwards references lean this way.</p>
+    <div class="frames">
+      <div class="frame desk">
+        <div class="a-wrap">
+          <div class="a-bar">
+            <a class="name">Timilehin Omotugba</a>
+            <nav><a class="on">Work</a><a>Experience</a><a>Contact</a></nav>
+            <a class="a-cta">Email me</a>
+          </div>
+        </div>
+        <div class="hero a-hero"><span class="pill"><i></i>Open to work</span><h3>I build websites and apps people <em>enjoy</em> using.</h3></div>
+        <a class="fab"><b>&lt;/&gt;</b>View as code</a>
+      </div>
+      <div class="frame phone">
+        <div class="a-wrap">
+          <div class="a-bar">
+            <a class="name">Timilehin Omotugba</a>
+            <a class="a-cta">Email</a>
+          </div>
+        </div>
+        <div class="hero a-hero"><span class="pill"><i></i>Open to work</span><h3>I build websites and apps people <em>enjoy</em> using.</h3></div>
+        <a class="fab"><b>&lt;/&gt;</b>Code</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <h2>B. Name and role, with a résumé button</h2>
+    <p>Closest to the current header, but your role sits under your name, the active link gets a green underline, and the right side gets an outlined "Résumé" button. It's the most conventional, and the safest for recruiters. It's also the least distinctive.</p>
+    <div class="frames">
+      <div class="frame desk">
+        <div class="b-bar">
+          <a class="b-who"><div><span>Timilehin Omotugba</span><small>Frontend developer, Abuja</small></div></a>
+          <nav><a class="on">Work</a><a>Experience</a><a>Contact</a></nav>
+          <a class="b-cta">Résumé ↗</a>
+        </div>
+        <div class="hero b-hero"><span class="pill"><i></i>Open to work</span><h3>I build websites and apps people <em>enjoy</em> using.</h3></div>
+        <a class="fab"><b>&lt;/&gt;</b>View as code</a>
+      </div>
+      <div class="frame phone">
+        <div class="b-bar">
+          <a class="b-who"><div><span>Timilehin Omotugba</span><small>Frontend developer</small></div></a>
+          <a class="b-cta">Résumé</a>
+        </div>
+        <div class="hero b-hero"><span class="pill"><i></i>Open to work</span><h3>I build websites and apps people <em>enjoy</em> using.</h3></div>
+        <a class="fab"><b>&lt;/&gt;</b>Code</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <h2>C. Editorial masthead</h2>
+    <p>Like the top of a magazine: links on the left, your name in the serif italic in the centre, "Get in touch" on the right, with a firm rule underneath. It goes furthest with the editorial direction and is the most distinctive. The tradeoff is that the name competes with the big hero headline right below it.</p>
+    <div class="frames">
+      <div class="frame desk">
+        <div class="c-bar">
+          <nav><a class="on">Work</a><a>Experience</a><a>Contact</a></nav>
+          <a class="c-name">Timilehin <em>Omotugba</em></a>
+          <a class="c-right">Get in touch →</a>
+        </div>
+        <div class="hero c-hero"><span class="pill"><i></i>Open to work</span><h3>I build websites and apps people <em>enjoy</em> using.</h3></div>
+        <a class="fab"><b>&lt;/&gt;</b>View as code</a>
+      </div>
+      <div class="frame phone">
+        <div class="c-bar">
+          <a class="c-name">Timilehin <em>Omotugba</em></a>
+          <a class="c-right">Contact</a>
+        </div>
+        <div class="hero c-hero"><span class="pill"><i></i>Open to work</span><h3>I build websites and apps people <em>enjoy</em> using.</h3></div>
+        <a class="fab"><b>&lt;/&gt;</b>Code</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <h2>The floating button in the editor</h2>
+    <p>Same place and shape, light instead of dark, and it takes you back. The editor's title bar loses the toggle.</p>
+    <div class="frames">
+      <div class="frame phone dark" style="height:220px">
+        <a class="fab back"><b>←</b>Simple view</a>
+        <small class="cap">Editor, any width</small>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
