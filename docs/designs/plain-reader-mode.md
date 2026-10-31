@@ -123,10 +123,10 @@ corner of the screen in both views, so the header stays about the person.
 
 ## Content to confirm before shipping
 
-Draft copy in the mockup that needs Timilehin's corrections:
-- "What I did" for each project, and "made them faster" for Africa Exchange.
-- Project description for GMS. (Light House Inverter was removed: its site is down.)
-- "I usually reply within a day".
-- Volomn's real dates. `experiences.json` has a placeholder ("Jan 2023 -
-  Jun 2023", shown as "2023") until the real ones are known.
+Confirmed by Timilehin: the project copy, "I usually reply within a day",
+and Volomn's dates (Jan to Feb 2023). Light House Inverter was removed
+because its site is down.
+
+Still open:
 - A sharper photo (current one is 326×507).
+- `public/og-image.png` still says "Frontend Developer" in the image.
