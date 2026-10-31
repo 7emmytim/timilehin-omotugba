@@ -34,17 +34,5 @@
         ],
         "description": "Lets a national research institute publish funding calls, take applications and award grants in one place.",
         "role": "built the application and review screens."
-    },
-    {
-        "name": "Light House Inverter",
-        "company": "Light House Inverter",
-        "image": "light-house-inverter",
-        "url": "https://www.lighthouseinverter.com/",
-        "tags": [
-            "Solar energy",
-            "Business site"
-        ],
-        "description": "The website for a solar and inverter company, showing its products and services to homes and businesses.",
-        "role": "designed and built the site."
     }
 ]
