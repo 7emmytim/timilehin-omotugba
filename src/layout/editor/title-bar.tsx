@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { DevModeToggle } from "@/layout/common/dev-mode-toggle";
 
 export function TitleBar() {
   return (
@@ -21,9 +20,9 @@ export function TitleBar() {
         timilehin.ts / timilehin-omotugba
       </span>
 
-      <div className="ml-auto md:ml-0">
-        <DevModeToggle tone="dark" />
-      </div>
+      {/* Balances the traffic lights so the title stays centred. The view
+          switch floats in the corner now. */}
+      <span aria-hidden="true" className="hidden w-[52px] flex-none md:block" />
     </div>
   );
 }

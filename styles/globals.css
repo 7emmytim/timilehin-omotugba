@@ -80,6 +80,14 @@ html[data-mode="reader"] body {
 /* Keeps section headings clear of the plain page's sticky header (76px). */
 html {
   scroll-padding-top: 96px;
+  /* The light page scrolls and the editor doesn't. Reserving the scrollbar's
+     space in both keeps the floating view switch from jumping sideways. */
+  scrollbar-gutter: stable;
+}
+
+/* So the reserved gutter and any scrollbar track are dark in the editor. */
+html[data-mode="dev"] {
+  color-scheme: dark;
 }
 
 body {

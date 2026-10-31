@@ -7,7 +7,8 @@ export function Footer() {
   return (
     <footer className="mt-12 border-t border-rule min-[860px]:mt-[clamp(56px,8vw,96px)]">
       <div
-        className={`${WRAP} flex flex-wrap items-center justify-between gap-3 py-7 text-sm text-ink-60`}
+        // The bottom padding keeps the floating view switch off these links.
+        className={`${WRAP} flex flex-wrap items-center justify-between gap-3 pt-7 pb-24 text-sm text-ink-60`}
       >
         {/* The static build and the visitor's clock can disagree around New Year. */}
         <span suppressHydrationWarning>

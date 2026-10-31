@@ -1,2 +1,2 @@
 export * from "./meta-tags";
-export * from "./dev-mode-toggle";
+export * from "./view-switch-button";

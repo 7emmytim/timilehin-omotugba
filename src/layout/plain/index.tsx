@@ -1,3 +1,4 @@
+import { ViewSwitchButton } from "@/layout/common/view-switch-button";
 import { Contact } from "./contact";
 import { Experience } from "./experience";
 import { Facts } from "./facts";
@@ -14,6 +15,9 @@ export function PlainPage() {
   return (
     <div className="flex min-h-[100dvh] flex-col bg-paper text-ink">
       <Header />
+      {/* Fixed to the corner, but early in the DOM so keyboard users reach it
+          right after the header. */}
+      <ViewSwitchButton />
       <main className="flex-1">
         <Hero />
         <Facts />
