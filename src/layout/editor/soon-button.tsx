@@ -7,26 +7,20 @@ import { useId, type ReactNode } from "react";
  */
 export function SoonButton({
   label,
-  tip = `${label} is coming soon`,
   side = "top",
-  wide = false,
   className,
   children,
 }: {
   /** What the control would do, e.g. "Search". */
   label: string;
-  /** Overrides the tooltip, for a control whose answer lives elsewhere. */
-  tip?: string;
   side?: "top" | "right";
-  /** Fill the row, for list items rather than icons. */
-  wide?: boolean;
   className: string;
   children: ReactNode;
 }) {
   const tipId = useId();
 
   return (
-    <span className={`group relative ${wide ? "flex w-full" : "inline-flex"}`}>
+    <span className="group relative inline-flex">
       <button
         type="button"
         aria-disabled="true"
@@ -45,7 +39,7 @@ export function SoonButton({
             : "bottom-full left-1/2 mb-1.5 -translate-x-1/2"
         }`}
       >
-        {tip}
+        {label} is coming soon
       </span>
     </span>
   );

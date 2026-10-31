@@ -36,6 +36,13 @@ type NavContextValue = {
   openFile: OpenFile;
   openResume: () => void;
   closeResume: () => void;
+  /** The editor's terminal panel, which holds the contact details. */
+  terminalOpen: boolean;
+  setTerminalOpen: (open: boolean) => void;
+  /** Set by showContact; the terminal focuses its first link, then clears it. */
+  contactPending: boolean;
+  showContact: () => void;
+  contactShown: () => void;
   /** Attached by EditorShell to the one element that scrolls. */
   scrollerRef: RefObject<HTMLDivElement | null>;
 };
@@ -130,6 +137,16 @@ export function NavProvider({ children }: { children: ReactNode }) {
   const openResume = useCallback(() => setOpenFile("resume"), []);
   const closeResume = useCallback(() => setOpenFile("doc"), []);
 
+  const [terminalOpen, setTerminalOpen] = useState(true);
+  const [contactPending, setContactPending] = useState(false);
+  // The terminal is hidden while the résumé is open, so go back to the code too.
+  const showContact = useCallback(() => {
+    setOpenFile("doc");
+    setTerminalOpen(true);
+    setContactPending(true);
+  }, []);
+  const contactShown = useCallback(() => setContactPending(false), []);
+
   // Scroll spy: the active tab follows where the reader actually is.
   useEffect(() => {
     if (openFile !== "doc") return;
@@ -189,6 +206,11 @@ export function NavProvider({ children }: { children: ReactNode }) {
         openFile,
         openResume,
         closeResume,
+        terminalOpen,
+        setTerminalOpen,
+        contactPending,
+        showContact,
+        contactShown,
         scrollerRef,
       }}
     >

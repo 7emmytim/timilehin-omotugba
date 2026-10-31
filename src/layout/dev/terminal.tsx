@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useNav } from "@/context";
 import { SoonButton } from "@/layout/editor/soon-button";
 
 const OUTPUT = [
@@ -20,7 +21,31 @@ const OUTPUT = [
 
 /** Dev mode's contact section: the terminal panel, where contact info belongs. */
 export function Terminal() {
-  const [open, setOpen] = useState(true);
+  const {
+    terminalOpen: open,
+    setTerminalOpen: setOpen,
+    contactPending,
+    contactShown,
+  } = useNav();
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const [flash, setFlash] = useState(false);
+
+  // contact.ts in the explorer asked for the contact details, so land on them.
+  // Browsers hide the focus ring after a mouse click, and the terminal is often
+  // already open, so the lines light up briefly to show where the click went.
+  useEffect(() => {
+    if (!contactPending || !open) return;
+    bodyRef.current?.scrollTo({ top: 0 });
+    bodyRef.current?.querySelector<HTMLElement>("a")?.focus();
+    setFlash(true);
+    contactShown();
+  }, [contactPending, open, contactShown]);
+
+  useEffect(() => {
+    if (!flash) return;
+    const timer = window.setTimeout(() => setFlash(false), 1400);
+    return () => window.clearTimeout(timer);
+  }, [flash]);
 
   return (
     <div className="border-t border-hair bg-editor">
@@ -43,7 +68,7 @@ export function Terminal() {
 
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="terminal-body"
           className="ml-auto cursor-pointer px-1 text-[13px] normal-case hover:text-fg"
@@ -55,6 +80,7 @@ export function Terminal() {
 
       {open && (
         <div
+          ref={bodyRef}
           id="terminal-body"
           className="max-h-[30vh] overflow-y-auto px-4 pt-3 pb-4 font-mono text-[12.5px] leading-[21px] editor-scroll sm:max-h-[34vh] sm:text-[13px]"
         >
@@ -65,7 +91,15 @@ export function Terminal() {
           </div>
 
           {OUTPUT.map(({ key, value, href }) => (
-            <div key={key} className="flex gap-2 text-fg/80">
+            <div
+              key={key}
+              // Lights up fast, fades out slowly.
+              className={`-mx-2 flex gap-2 rounded px-2 text-fg/80 transition-colors motion-reduce:transition-none ${
+                flash
+                  ? "bg-accent/20 duration-150"
+                  : "bg-transparent duration-1000"
+              }`}
+            >
               <span aria-hidden="true">→</span>
               <span className="w-[4.5rem] flex-none">{key}</span>
               <Link

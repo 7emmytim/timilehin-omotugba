@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNav } from "@/context";
 import experiences from "@/data/experiences.json";
 import projects from "@/data/projects.json";
-import { SoonButton } from "./soon-button";
 
 const ROW =
   "flex w-full items-center gap-2 py-[5px] pr-[18px] text-left text-[12.5px] whitespace-nowrap";
@@ -56,7 +55,7 @@ function NavRow({
 }
 
 export function Explorer() {
-  const { items, openFile, openResume } = useNav();
+  const { items, openFile, openResume, showContact } = useNav();
   const [srcOpen, setSrcOpen] = useState(true);
 
   const counts: Record<string, string> = {
@@ -87,19 +86,19 @@ export function Explorer() {
             <NavRow key={item.id} {...item} meta={counts[item.id]} nested />
           ))}
 
-          {/* Not a real file: the contact details are the terminal output. */}
-          <SoonButton
-            label="contact.ts"
-            tip="Contact details are in the terminal below"
-            side="right"
-            wide
-            className={`${ROW} pl-8 hover:bg-hover`}
+          {/* Not a real file: the contact details are the terminal output,
+              so this opens the terminal and lands on them. */}
+          <button
+            type="button"
+            onClick={showContact}
+            title="Show contact details in the terminal"
+            className={`${ROW} cursor-pointer pl-8 hover:bg-hover`}
           >
             <span className="w-4 flex-none text-center text-[11px] text-s-blue">
               TS
             </span>
             contact.ts
-          </SoonButton>
+          </button>
         </div>
       )}
 
