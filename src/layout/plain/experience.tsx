@@ -16,7 +16,7 @@ export function Experience() {
         className={`${WRAP} grid gap-6 min-[860px]:grid-cols-[minmax(0,1fr)_minmax(0,1.9fr)] min-[860px]:gap-[clamp(32px,6vw,96px)]`}
       >
         {/* Stays in view while the roles scroll past, on wide screens. */}
-        <div className="min-[860px]:sticky min-[860px]:top-[108px] min-[860px]:self-start">
+        <div className="min-[860px]:sticky min-[860px]:top-[116px] min-[860px]:self-start">
           <SectionTitle kicker="Experience">
             Where I&apos;ve <Accent>worked</Accent>
           </SectionTitle>

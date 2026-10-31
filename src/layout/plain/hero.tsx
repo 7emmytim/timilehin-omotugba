@@ -27,7 +27,7 @@ export function Hero() {
             />
             Open to work
           </span>
-          <span>Frontend developer · Abuja, Nigeria</span>
+          <span>Software Engineer</span>
         </p>
 
         <h1 className="m-0 max-w-[15ch] text-[clamp(44px,7.6vw,104px)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-ink">

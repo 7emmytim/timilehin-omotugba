@@ -37,7 +37,7 @@ export function buildSource(): SourceSection[] {
     [t.com("/**")],
     [
       t.com(
-        ` * Frontend Developer, Abuja NG. ${yearsShipping()}+ years shipping production React.`,
+        ` * Software Engineer, Abuja NG. ${yearsShipping()}+ years shipping production React.`,
       ),
     ],
     [t.com(` * Currently at ${experiences[0].company}. Open to new work.`)],
@@ -52,7 +52,7 @@ export function buildSource(): SourceSection[] {
       t.p(" = {"),
     ],
     [t.p(`${INDENT}name: `), t.str("Timilehin Omotugba"), t.p(",")],
-    [t.p(`${INDENT}role: `), t.str("Frontend Developer"), t.p(",")],
+    [t.p(`${INDENT}role: `), t.str("Software Engineer"), t.p(",")],
     [
       t.p(`${INDENT}location: `),
       t.str("Abuja, Nigeria"),

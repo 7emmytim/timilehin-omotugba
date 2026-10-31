@@ -77,9 +77,9 @@ html[data-mode="reader"] body {
   color: var(--color-ink);
 }
 
-/* Keeps section headings clear of the plain page's sticky header (68px). */
+/* Keeps section headings clear of the plain page's sticky header (76px). */
 html {
-  scroll-padding-top: 88px;
+  scroll-padding-top: 96px;
 }
 
 body {
