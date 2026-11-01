@@ -19,8 +19,17 @@ export function Hero() {
       className="pt-10 pb-11 min-[860px]:pt-[clamp(48px,6vw,88px)] min-[860px]:pb-[clamp(48px,7vw,88px)]"
     >
       <div className={WRAP}>
-        <p className="m-0 mb-4 text-[17px] font-medium tracking-[-0.01em] text-ink-60 min-[860px]:mb-6 min-[860px]:text-[20px]">
-          Hi, I&apos;m Timi.
+        <p className="m-0 mb-[22px] flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[15px] text-ink-60 min-[860px]:mb-8">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full border border-leaf-line bg-leaf-dim px-3 py-1.5 text-[13.5px] font-semibold text-leaf transition-colors hover:border-leaf"
+          >
+            <i
+              aria-hidden="true"
+              className="block h-[7px] w-[7px] rounded-full bg-leaf shadow-[0_0_0_4px_rgba(42,110,76,0.15)]"
+            />
+            Say hello
+          </a>
         </p>
 
         <h1 className="m-0 max-w-[15ch] text-[clamp(44px,7.6vw,104px)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-ink">
