@@ -32,7 +32,7 @@ in `src/data/projects.json`. To refresh them after a site changes:
 ```bash
 npx playwright install chromium   # once per machine
 yarn screenshots                  # every project
-yarn screenshots helpa-v2         # one project, by its "image" name
+yarn screenshots helpa-v3         # one project, by its "image" name
 ```
 
 They're saved to `public/images/<image>.png`. If a site fails to load, its

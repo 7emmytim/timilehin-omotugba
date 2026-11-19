@@ -1,7 +1,7 @@
 // Captures each project's live site for the Selected work section.
 //
 //   yarn screenshots              all projects
-//   yarn screenshots helpa-v2     one project, by its "image" name
+//   yarn screenshots helpa-v3     one project, by its "image" name
 //
 // Needs Chromium once: npx playwright install chromium
 
@@ -25,10 +25,16 @@ const SETTLE_MS = 1_500;
  * - hide: elements to remove before capturing, like chat buttons.
  */
 const SITE_OPTIONS = {
-  "africa-exchange": {
-    skip: "its image server refuses automated browsers (403), so the logo and pictures come back broken. Update public/images/africa-exchange.png by hand.",
+  "africa-exchange-v2": {
+    skip: "its image server refuses automated browsers (403), so the logo and pictures come back broken. Update public/images/africa-exchange-v2.png by hand.",
   },
-  "helpa-v2": { hide: ['a[href^="https://wa.me"]'] },
+  "helpa-v3": { hide: ['a[href^="https://wa.me"]'] },
+  cudie: {
+    skip: "its image is the first frame of public/videos/cudie.mp4 and has to match it. Regenerate it from the video with ffmpeg.",
+  },
+  baddecisions: {
+    skip: "its image is the first frame of public/videos/baddecisions.mp4 and has to match it. Regenerate it from the video with ffmpeg.",
+  },
 };
 
 const projects = JSON.parse(

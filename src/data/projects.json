@@ -2,7 +2,7 @@
     {
         "name": "Africa Exchange",
         "company": "AFEX",
-        "image": "africa-exchange",
+        "image": "africa-exchange-v2",
         "url": "https://africaexchange.com/",
         "tags": [
             "Trading",
@@ -14,7 +14,7 @@
     {
         "name": "Helpa",
         "company": "Helpa",
-        "image": "helpa-v2",
+        "image": "helpa-v3",
         "url": "https://helpa.me/",
         "tags": [
             "Healthcare",
@@ -24,15 +24,48 @@
         "role": "built the donation flow, the page builder NGOs use, and sign-in for four kinds of users."
     },
     {
-        "name": "Grant Management System",
-        "company": "NICRAT",
-        "image": "gms",
-        "url": "https://nicrat.sydfunds.com/",
+        "name": "SydFunds",
+        "company": "SydFunds",
+        "image": "sydfunds",
+        "inset": "nicrat",
+        "url": "https://sydfunds.com/",
+        "links": [
+            {
+                "label": "NICRAT's portal",
+                "url": "https://nicrat.sydfunds.com/"
+            }
+        ],
         "tags": [
-            "Research",
+            "Grants",
             "NICRAT"
         ],
-        "description": "Lets a national research institute publish funding calls, take applications and award grants in one place.",
+        "description": "A grant management platform. NICRAT, a national research institute, runs its funding calls on it.",
         "role": "built the application and review screens."
+    },
+    {
+        "name": "Cudie",
+        "company": "Cudie",
+        "image": "cudie",
+        "video": "cudie",
+        "url": "https://cudie.ng/",
+        "tags": [
+            "Payments",
+            "Mobile"
+        ],
+        "description": "A payments app for sending money, buying airtime and paying bills.",
+        "role": ""
+    },
+    {
+        "name": "Bad Decisions",
+        "company": "Bad Decisions",
+        "image": "baddecisions",
+        "video": "baddecisions",
+        "url": "https://ai.baddecisions.studio/",
+        "tags": [
+            "Education",
+            "AI"
+        ],
+        "description": "The site for an AI training program, built for people at any level.",
+        "role": ""
     }
 ]

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Selected work mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f7f6f2; --raised: #fff; --sunk: #efeee8; --rule: #e4e2db;
+    --ink: #14151a; --ink75: #3a3d46; --ink60: #5b5f6b;
+    --leaf: #2a6e4c; --leaf-dim: #e7f1eb; --leaf-line: #c5dfd0;
+    --sans: "Instrument Sans", system-ui, sans-serif;
+    --serif: "Instrument Serif", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --shadow: 0 1px 2px rgba(20,21,26,.04), 0 12px 32px -12px rgba(20,21,26,.12);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+  img, video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+
+  /* mockup chrome, not part of the design */
+  .switch { position: sticky; top: 0; z-index: 10; background: #14151a; color: #fff; }
+  .switch .wrap { display: flex; gap: 8px; align-items: center; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
+  .switch b { font-size: 13px; margin-right: 8px; }
+  .switch a { color: #fff; text-decoration: none; font-size: 13px; padding: 6px 12px; border: 1px solid #3a3d46; border-radius: 99px; }
+  .switch a:hover { border-color: #7cc4a0; }
+  .switch small { color: #9aa0ad; font-size: 12px; margin-left: auto; }
+  .label { margin-top: 72px; padding: 14px 18px; border: 1px dashed var(--ink60); border-radius: 10px; font-size: 14px; color: var(--ink75); background: var(--raised); }
+  .label strong { color: var(--ink); }
+
+  /* shared section header, same as the live site */
+  section { padding-top: clamp(48px, 7vw, 96px); padding-bottom: 24px; }
+  .head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 40px; margin-bottom: clamp(28px, 4vw, 48px); }
+  .kicker { margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--leaf); }
+  h2 { margin: 0; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.05; font-weight: 600; letter-spacing: -.035em; }
+  h2 em, .accent { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--leaf); letter-spacing: -.01em; }
+  .lede { margin: 0; max-width: 40ch; font-size: 15px; line-height: 1.6; color: var(--ink60); }
+
+  .num { font-family: var(--mono); font-size: 13px; color: var(--ink60); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 12px 0; padding: 0; }
+  .tags li { border: 1px solid var(--rule); background: var(--raised); border-radius: 99px; padding: 4px 10px; font-size: 12.5px; color: var(--ink75); }
+  .desc { margin: 0 0 10px; max-width: 44ch; font-size: 16px; line-height: 1.6; color: var(--ink75); }
+  .role { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink60); }
+  .role b { color: var(--ink); }
+  .visit { display: inline-flex; gap: 8px; margin-top: 18px; padding-bottom: 3px; border-bottom: 1px solid var(--leaf-line); color: var(--leaf); font-weight: 600; font-size: 15px; text-decoration: none; }
+  .visit:hover { border-color: var(--leaf); }
+
+  /* outcome chip: dashed means "put a real number here" */
+  .stat { display: inline-flex; align-items: baseline; gap: 6px; margin: 4px 0 14px; padding: 6px 12px; border-radius: 8px; background: var(--leaf-dim); border: 1px dashed var(--leaf); color: var(--leaf); font-size: 13px; font-weight: 600; }
+  .stat span { font-weight: 400; color: var(--ink60); }
+
+  /* the white browser frame from the live site */
+  .frame { display: block; border: 1px solid var(--rule); background: var(--raised); border-radius: 18px; padding: 10px; box-shadow: var(--shadow); transition: transform .4s, box-shadow .4s; }
+  .frame:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(20,21,26,.04), 0 24px 48px -16px rgba(20,21,26,.2); }
+  .dots { display: flex; gap: 6px; padding: 4px 6px 10px; }
+  .dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--rule); }
+  .screen { position: relative; aspect-ratio: 16/10; overflow: hidden; border-radius: 10px; background: var(--sunk); }
+  .live { position: absolute; left: 10px; top: 10px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 99px; background: rgba(20,21,26,.72); color: #fff; font-size: 11.5px; font-weight: 600; }
+  .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #7cc4a0; }
+  .inset { position: absolute; right: 12px; bottom: 12px; width: 44%; aspect-ratio: 16/10; border-radius: 8px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 10px 28px -8px rgba(20,21,26,.35); }
+  .inset-cap { position: absolute; right: 12px; bottom: calc(12px + 44% * .625 + 10px); font-size: 11px; font-weight: 600; background: #fff; padding: 3px 8px; border-radius: 99px; color: var(--ink75); box-shadow: var(--shadow); }
+
+  /* ---------- A: two featured rows, then a grid ---------- */
+  .a-rows { list-style: none; margin: 0; padding: 0; }
+  .a-row { display: grid; gap: 18px; border-top: 1px solid var(--rule); padding: 28px 0; }
+  .more-head { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 28px; margin-bottom: 20px; }
+  .more-head h3 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+  .a-grid { display: grid; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  .a-card h4 { margin: 16px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+  .a-card p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--ink75); }
+  .a-card .tags { margin: 10px 0 0; }
+  .a-card .visit { margin-top: 12px; font-size: 14px; }
+  .a-card .frame { padding: 6px; border-radius: 14px; }
+  .a-card .dots { display: none; }
+  .a-card .screen { aspect-ratio: 4/3; border-radius: 9px; }
+  @media (min-width: 860px) {
+    .a-row { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 64px); padding: 44px 0; }
+    .a-row.flip .frame { order: 2; }
+    .a-row h3 { font-size: clamp(26px, 2.8vw, 34px); }
+    .a-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .a-row h3 { margin: 6px 0 0; font-size: 24px; font-weight: 600; letter-spacing: -.03em; }
+
+  /* ---------- B: split cards ---------- */
+  .b-list { display: grid; gap: 18px; list-style: none; margin: 0; padding: 0; }
+  .b-card { display: grid; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; background: var(--sunk); box-shadow: var(--shadow); }
+  .b-text { padding: 22px; display: flex; flex-direction: column; }
+  .b-text h3 { margin: 8px 0 0; font-size: 24px; font-weight: 600; letter-spacing: -.03em; }
+  .b-text .desc { font-size: 15px; margin-top: 8px; }
+  .b-text .foot { margin-top: auto; padding-top: 14px; }
+  .b-media { position: relative; aspect-ratio: 16/10; background: var(--raised); }
+  @media (min-width: 860px) {
+    .b-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); min-height: 360px; }
+    .b-card.flip .b-media { order: -1; }
+    .b-text { padding: 32px; }
+    .b-text h3 { font-size: 30px; }
+    .b-media { aspect-ratio: auto; }
+  }
+
+  /* ---------- C: tiles with text on the image ---------- */
+  .c-grid { display: grid; gap: 4px; list-style: none; margin: 0; padding: 0; border-radius: 18px; overflow: hidden; }
+  .c-tile { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #14151a; color: #fff; }
+  .c-tile img, .c-tile video { position: absolute; inset: 0; opacity: .55; transition: opacity .4s, transform .6s; filter: grayscale(.3); }
+  .c-tile:hover img, .c-tile:hover video { opacity: .85; transform: scale(1.02); filter: none; }
+  .c-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,15,19,.92) 0%, rgba(14,15,19,.2) 55%, rgba(14,15,19,0) 100%); }
+  .c-in { position: absolute; inset: auto 0 0 0; z-index: 2; padding: 20px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  .c-top { position: absolute; top: 16px; left: 20px; z-index: 2; font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,.75); }
+  .c-in h3 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -.03em; }
+  .c-in p { margin: 4px 0 0; font-size: 14px; color: rgba(255,255,255,.78); max-width: 38ch; }
+  .c-stat { text-align: right; flex-shrink: 0; }
+  .c-stat strong { display: block; font-size: 28px; font-weight: 600; letter-spacing: -.03em; border-bottom: 1px dashed rgba(255,255,255,.5); }
+  .c-stat small { font-size: 11.5px; color: rgba(255,255,255,.7); }
+  @media (min-width: 860px) {
+    .c-grid { grid-template-columns: 1fr 1fr; }
+    .c-tile.wide { grid-column: span 2; aspect-ratio: 21/9; }
+    .c-in h3 { font-size: 32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .frame, .c-tile img, .c-tile video { transition: none; }
+    .frame:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="switch" aria-label="Mockups">
+  <div class="wrap">
+    <b>Selected work mockups</b>
+    <a href="#a">A: featured + grid</a>
+    <a href="#b">B: split cards</a>
+    <a href="#c">C: tiles</a>
+    <small>Dashed boxes = placeholder numbers. Cudie and Bad Decisions copy is placeholder too.</small>
+  </div>
+</nav>
+
+<!-- ================= A ================= -->
+<div class="wrap" id="a">
+  <p class="label"><strong>A. Two featured rows, then a grid (recommended).</strong> Your current zigzag for the two biggest projects, then smaller cards for the rest. Videos loop muted while on screen.</p>
+</div>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker">Selected work</p><h2>Products people <em>use</em> every day</h2></div>
+      <p class="lede">Each one is live. Click a screenshot to visit the real site.</p>
+    </div>
+
+    <ol class="a-rows">
+      <li class="a-row">
+        <a class="frame" href="#" aria-hidden="true" tabindex="-1"><span class="dots"><i></i><i></i><i></i></span><span class="screen"><img src="../../public/images/africa-exchange-v2.png" alt="" /></span></a>
+        <div>
+          <span class="num">01</span>
+          <h3>Africa Exchange</h3>
+          <ul class="tags"><li>Trading</li><li>AFEX</li></ul>
+          <div class="stat">e.g. 2x faster <span>trading screens</span></div>
+          <p class="desc">A marketplace where farmers, processors and investors buy and sell agricultural commodities across Africa.</p>
+          <p class="role"><b>What I did:</b> built and maintain the screens traders use every day, and made them faster.</p>
+          <a class="visit" href="#">Visit site ↗</a>
+        </div>
+      </li>
+      <li class="a-row flip">
+        <a class="frame" href="#" aria-hidden="true" tabindex="-1"><span class="dots"><i></i><i></i><i></i></span><span class="screen"><img src="../../public/images/helpa-v3.png" alt="" /></span></a>
+        <div>
+          <span class="num">02</span>
+          <h3>Helpa</h3>
+          <ul class="tags"><li>Healthcare</li><li>Charity</li></ul>
+          <div class="stat">e.g. ₦XM <span>raised for patients</span></div>
+          <p class="desc">A platform where NGOs raise money for patients, and donors give in their own currency.</p>
+          <p class="role"><b>What I did:</b> built the donation flow, the page builder NGOs use, and sign-in for four kinds of users.</p>
+          <a class="visit" href="#">Visit site ↗</a>
+        </div>
+      </li>
+    </ol>
+
+    <div class="more-head"><h3>More work</h3><span class="num">03 to 05</span></div>
+    <ul class="a-grid">
+      <li class="a-card">
+        <a class="frame" href="#" aria-hidden="true" tabindex="-1"><span class="screen"><img src="../../public/images/sydfunds.png" alt="" /><span class="inset"><img src="../../public/images/nicrat.png" alt="" /></span></span></a>
+        <h4>SydFunds</h4>
+        <p>A grant management platform. NICRAT, a national research institute, runs its funding calls on it.</p>
+        <ul class="tags"><li>Grants</li><li>NICRAT</li></ul>
+        <a class="visit" href="#">Visit site ↗</a>
+      </li>
+      <li class="a-card">
+        <a class="frame" href="#" aria-hidden="true" tabindex="-1"><span class="screen"><span class="live">Live preview</span><video src="../../public/videos/cudie.mp4" poster="../../public/images/cudie.png" muted loop playsinline autoplay></video></span></a>
+        <h4>Cudie</h4>
+        <p>A payments app for sending money, buying airtime and paying bills.</p>
+        <ul class="tags"><li>Payments</li><li>Mobile</li></ul>
+        <a class="visit" href="#">Visit site ↗</a>
+      </li>
+      <li class="a-card">
+        <a class="frame" href="#" aria-hidden="true" tabindex="-1"><span class="screen"><span class="live">Live preview</span><video src="../../public/videos/baddecisions.mp4" poster="../../public/images/baddecisions.png" muted loop playsinline autoplay></video></span></a>
+        <h4>Bad Decisions</h4>
+        <p>The site for an AI training program, built for people at any level.</p>
+        <ul class="tags"><li>Education</li><li>AI</li></ul>
+        <a class="visit" href="#">Visit site ↗</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= B ================= -->
+<div class="wrap" id="b">
+  <p class="label"><strong>B. Split cards.</strong> Every project in one contained card, text on a tinted panel, media filling the other side. Tighter than today, still long with five.</p>
+</div>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker">Selected work</p><h2>Products people <em>use</em> every day</h2></div>
+      <p class="lede">Each one is live. Click a screenshot to visit the real site.</p>
+    </div>
+    <ol class="b-list">
+      <li class="b-card">
+        <div class="b-text">
+          <span class="num">01 · Trading</span>
+          <h3>Africa Exchange</h3>
+          <p class="desc">A marketplace where farmers, processors and investors buy and sell agricultural commodities across Africa.</p>
+          <div class="foot"><div class="stat">e.g. 2x faster <span>trading screens</span></div><br /><a class="visit" href="#" style="margin-top:4px">Visit site ↗</a></div>
+        </div>
+        <div class="b-media"><img src="../../public/images/africa-exchange-v2.png" alt="" /></div>
+      </li>
+      <li class="b-card flip">
+        <div class="b-text">
+          <span class="num">02 · Healthcare</span>
+          <h3>Helpa</h3>
+          <p class="desc">A platform where NGOs raise money for patients, and donors give in their own currency.</p>
+          <div class="foot"><div class="stat">e.g. ₦XM <span>raised</span></div><br /><a class="visit" href="#" style="margin-top:4px">Visit site ↗</a></div>
+        </div>
+        <div class="b-media"><img src="../../public/images/helpa-v3.png" alt="" /></div>
+      </li>
+      <li class="b-card">
+        <div class="b-text">
+          <span class="num">03 · Grants</span>
+          <h3>SydFunds</h3>
+          <p class="desc">A grant management platform. NICRAT, a national research institute, runs its funding calls on it.</p>
+          <div class="foot"><a class="visit" href="#">Visit site ↗</a></div>
+        </div>
+        <div class="b-media"><img src="../../public/images/sydfunds.png" alt="" /><span class="inset"><img src="../../public/images/nicrat.png" alt="" /></span></div>
+      </li>
+      <li class="b-card flip">
+        <div class="b-text">
+          <span class="num">04 · Payments</span>
+          <h3>Cudie</h3>
+          <p class="desc">A payments app for sending money, buying airtime and paying bills.</p>
+          <div class="foot"><a class="visit" href="#">Visit site ↗</a></div>
+        </div>
+        <div class="b-media"><span class="live">Live preview</span><video src="../../public/videos/cudie.mp4" poster="../../public/images/cudie.png" muted loop playsinline autoplay></video></div>
+      </li>
+      <li class="b-card">
+        <div class="b-text">
+          <span class="num">05 · Education</span>
+          <h3>Bad Decisions</h3>
+          <p class="desc">The site for an AI training program, built for people at any level.</p>
+          <div class="foot"><a class="visit" href="#">Visit site ↗</a></div>
+        </div>
+        <div class="b-media"><span class="live">Live preview</span><video src="../../public/videos/baddecisions.mp4" poster="../../public/images/baddecisions.png" muted loop playsinline autoplay></video></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= C ================= -->
+<div class="wrap" id="c">
+  <p class="label"><strong>C. Tiles with text on the image.</strong> Dense and bold. Hover brings the image up. The cost: busy screenshots fight the text, and "What I did" has no room.</p>
+</div>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker">Selected work</p><h2>Products people <em>use</em> every day</h2></div>
+      <p class="lede">Each one is live. Click a tile to visit the real site.</p>
+    </div>
+    <ol class="c-grid">
+      <li class="c-tile wide">
+        <img src="../../public/images/africa-exchange-v2.png" alt="" />
+        <span class="c-top">01 · Trading · AFEX</span>
+        <div class="c-in"><div><h3>Africa Exchange</h3><p>A commodities marketplace for farmers, processors and investors.</p></div><div class="c-stat"><strong>2x</strong><small>faster screens (placeholder)</small></div></div>
+      </li>
+      <li class="c-tile">
+        <img src="../../public/images/helpa-v3.png" alt="" />
+        <span class="c-top">02 · Healthcare</span>
+        <div class="c-in"><div><h3>Helpa</h3><p>NGOs raise money for patients.</p></div><div class="c-stat"><strong>₦XM</strong><small>raised</small></div></div>
+      </li>
+      <li class="c-tile">
+        <img src="../../public/images/sydfunds.png" alt="" />
+        <span class="c-top">03 · Grants · NICRAT</span>
+        <div class="c-in"><div><h3>SydFunds</h3><p>Grant management for research institutes.</p></div></div>
+      </li>
+      <li class="c-tile">
+        <video src="../../public/videos/cudie.mp4" poster="../../public/images/cudie.png" muted loop playsinline autoplay></video>
+        <span class="c-top">04 · Payments</span>
+        <div class="c-in"><div><h3>Cudie</h3><p>Send money, buy airtime, pay bills.</p></div></div>
+      </li>
+      <li class="c-tile">
+        <video src="../../public/videos/baddecisions.mp4" poster="../../public/images/baddecisions.png" muted loop playsinline autoplay></video>
+        <span class="c-top">05 · Education</span>
+        <div class="c-in"><div><h3>Bad Decisions</h3><p>An AI training program's site.</p></div></div>
+      </li>
+    </ol>
+  </div>
+</section>
+<div style="height:80px"></div>
+
+<script>
+  // Pause the loops for anyone who asked for less motion; they keep the poster frame.
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("video").forEach((v) => { v.removeAttribute("autoplay"); v.pause(); });
+  }
+</script>
+</body>
+</html>
