@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "screenshots": "node scripts/screenshots.mjs",
-    "og-image": "node scripts/og-image.mjs"
+    "og-image": "node scripts/og-image.mjs",
+    "resume": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/resume.mjs"
   },
   "dependencies": {
     "mixpanel-browser": "^2.68.0",

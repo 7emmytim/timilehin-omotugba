@@ -3,8 +3,8 @@ import experiences from "@/data/experiences.json";
 import { Accent, SectionTitle, WRAP } from "./shared";
 
 /**
- * The short version of each role, one plain sentence. The long descriptions
- * stay in the data for the dev view and the résumé.
+ * The short version of each role, one plain sentence. The highlights stay in
+ * the data for the dev view and the résumé.
  */
 export function Experience() {
   return (

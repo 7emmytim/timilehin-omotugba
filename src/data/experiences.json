@@ -6,7 +6,9 @@
         "location": "Remote",
         "duration": "2025 - Present",
         "period": "2025 – now",
-        "description": "Build and maintain SaaS products with React, for ReactSquad’s internal projects and for external clients, including Bad Decisions, RetailStars and TradeBuilder.",
+        "highlights": [
+            "Build and maintain SaaS products with React and TypeScript, for ReactSquad's internal projects and for clients including Bad Decisions, RetailStars and TradeBuilder."
+        ],
         "summary": "I build SaaS products with React, for ReactSquad's internal projects and for clients such as Bad Decisions, RetailStars and TradeBuilder.",
         "skills": [
             "React",
@@ -18,10 +20,16 @@
         "title": "Frontend Developer",
         "type": "Full-time",
         "location": "Hybrid",
-        "duration": "2021",
+        "duration": "Jan 2021",
         "period": "2021",
         "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQGUXraIhl0u8w/company-logo_100_100/company-logo_100_100/0/1630644778319/afex_commodities_exchange_logo?e=1761782400&v=beta&t=1wjrZWIqYHNZTCs8LidvduOyfTXZDsdZboo4sBrciYM",
-        "description": "Developed and maintained responsive, secure frontend components for Africa Exchange’s flagship trading platform, and built the public website and internal admin dashboard for Cudie, AFEX’s payments app, by translating Figma designs and integrating backend APIs. Collaborated closely with other frontend developers, designers, product managers, and backend engineers to deliver scalable, intuitive user experiences. Led performance optimizations, refactored legacy code to meet evolving business needs, and ensured adherence to Agile processes while implementing security best practices against common web vulnerabilities.",
+        "highlights": [
+            "Built and maintained responsive, secure components for Africa Exchange, AFEX's commodities trading platform, from Figma designs and backend APIs.",
+            "Built the public website and internal admin dashboard for Cudie, AFEX's payments app.",
+            "Worked in Agile sprints with other frontend developers, designers, product managers and backend engineers.",
+            "Led performance work and refactored legacy components as business needs changed.",
+            "Applied security practices against common web vulnerabilities."
+        ],
         "summary": "As part of AFEX's frontend team, I built screens for the Africa Exchange trading platform, plus Cudie's website and internal admin dashboard, and kept them fast and secure.",
         "skills": [
             "Next.js",
@@ -37,7 +45,10 @@
         "location": "Remote",
         "duration": "Mar 2025 - Jul 2025",
         "period": "2025",
-        "description": "Built the frontend for SydFunds, a grant management platform that covers the grant lifecycle from application to closeout, and for the National Institute for Cancer Research and Treatment’s (NICRAT) grants portal built on it. Delivered the application and review screens for applicants and reviewers.",
+        "highlights": [
+            "Built the frontend for SydFunds, a grant management platform that covers the grant lifecycle from application to closeout.",
+            "Built NICRAT's grants portal on SydFunds, including the application and review screens."
+        ],
         "summary": "Built SydFunds, a grant management platform, and NICRAT's grants portal on top of it, including the application and review screens.",
         "skills": [
             "Next.js",
@@ -52,7 +63,14 @@
         "duration": "Aug 2022 - Nov 2022, Apr 2024 - Dec 2024",
         "period": "2022, 2024",
         "logo": "https://media.licdn.com/dms/image/v2/C4D0BAQFzwYyUSOmaoA/company-logo_100_100/company-logo_100_100/0/1674620522771?e=1761782400&v=beta&t=dfFVHOwZL7Nnbo8c9uEnfdA5SMR1YvIG1n6-zNXhCTA",
-        "description": "As the sole frontend engineer, partnered with a backend engineer, a product designer and the management team to deliver two versions of Helpa’s user and admin platforms, for a crowdfunding service where individuals and NGOs raise money for medical care and social causes. Designed and implemented distinct workflows for four unique user types, ensuring personalized and efficient user experiences. Built a modular web page setup tool for NGO users, enabling theme customization and feature configuration. Enhanced platform SEO to improve search rankings and organic reach. Developed a secure, multi-currency donation flow with integrations to multiple global payment gateways. Implemented a flexible authentication and role-based access control system using Next.js middleware, complete with activity tracking for better security and user management.",
+        "highlights": [
+            "Sole frontend engineer on two versions of Helpa's user and admin platforms, a crowdfunding service for medical bills and social causes, working with a backend engineer, a product designer and management.",
+            "Built separate workflows for four kinds of users.",
+            "Built a page builder that lets NGOs set up their own page, theme and features.",
+            "Built a multi-currency donation flow with several payment gateways.",
+            "Built role-based sign-in with Next.js middleware, with activity tracking.",
+            "Improved SEO for better search visibility."
+        ],
         "summary": "As the sole frontend engineer, I built two versions of Helpa's user and admin platforms, including donations in several currencies.",
         "skills": [
             "Next.js",

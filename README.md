@@ -45,6 +45,18 @@ hide before capturing, or a reason to skip a site. Africa Exchange is
 skipped because its image server blocks automated browsers, so its
 screenshot is updated by hand.
 
+## Résumé
+
+`public/resume.pdf` is printed from the same data as the site: the roles
+come from `src/data/experiences.json` and everything else from
+`src/data/resume.json`. After changing either, run:
+
+```bash
+yarn resume
+```
+
+It stops with an error if the content no longer fits on one A4 page.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -1,0 +1,52 @@
+{
+    "name": "Timilehin Omotugba",
+    "title": "Frontend Engineer",
+    "summary": "Frontend engineer with {years} years of experience building web apps in React, Next.js and TypeScript, from a commodities trading platform to fundraising and grant management products. I care about fast, accessible interfaces and code the next developer can pick up easily.",
+    "contact": [
+        {
+            "label": "omotugbatimilehin7@gmail.com",
+            "href": "mailto:omotugbatimilehin7@gmail.com"
+        },
+        {
+            "label": "+234 916 406 2040",
+            "href": "tel:+2349164062040"
+        },
+        {
+            "label": "timilehinomotugba.com",
+            "href": "https://timilehinomotugba.com"
+        },
+        {
+            "label": "linkedin.com/in/timilehin-omotugba",
+            "href": "https://www.linkedin.com/in/timilehin-omotugba/"
+        },
+        {
+            "label": "github.com/7emmytim",
+            "href": "https://github.com/7emmytim"
+        }
+    ],
+    "skills": [
+        {
+            "group": "Languages",
+            "items": ["TypeScript", "JavaScript", "HTML", "CSS"]
+        },
+        {
+            "group": "Frameworks",
+            "items": ["React", "Next.js", "Tailwind CSS", "Mantine UI", "Redux", "TanStack Query"]
+        },
+        {
+            "group": "Tools",
+            "items": ["Vitest", "Git", "GitHub", "Bitbucket", "Vite", "ESLint", "Figma", "Jira"]
+        },
+        {
+            "group": "Practices",
+            "items": ["accessibility", "performance", "SEO", "authentication (NextAuth.js)", "API integration"]
+        }
+    ],
+    "education": [
+        {
+            "degree": "BSc Applied Geophysics",
+            "school": "University of Ilorin",
+            "period": "2015 - 2020"
+        }
+    ]
+}

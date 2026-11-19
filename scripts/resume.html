@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Timilehin Omotugba, Frontend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400&display=block" rel="stylesheet" />
+<style>
+  /* The résumé, filled from src/data and printed to public/resume.pdf by
+     scripts/resume.mjs. Same ink and leaf colours as the site. */
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #14151a; --ink75: #3a3d46; --ink60: #5b5f6b;
+    --rule: #e4e2db; --leaf: #2a6e4c;
+    --sans: "Instrument Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; color: var(--ink); font-family: var(--sans); }
+  .page { width: 210mm; height: 297mm; padding: 14mm 15mm 12mm; overflow: hidden; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16pt; padding-bottom: 11pt; border-bottom: 0.8pt solid var(--ink); }
+  .name { font-size: 26pt; font-weight: 600; letter-spacing: -0.035em; word-spacing: 0.12em; line-height: 1; }
+  .title { margin-top: 5pt; font-size: 12pt; font-weight: 600; color: var(--leaf); }
+  .summary { margin-top: 8pt; max-width: 118mm; font-size: 9.6pt; line-height: 1.55; color: var(--ink75); }
+  .contact { display: flex; flex-direction: column; align-items: flex-end; gap: 2.5pt; flex-shrink: 0; font-size: 8.8pt; color: var(--ink75); text-align: right; }
+
+  section { margin-top: 11pt; }
+  h2 { margin-bottom: 6pt; padding-bottom: 3pt; border-bottom: 0.6pt solid var(--rule); font-size: 7.6pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--leaf); }
+
+  .job + .job { margin-top: 9pt; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+  h3 { font-size: 10.6pt; font-weight: 600; letter-spacing: -0.01em; }
+  h3 span { font-weight: 400; color: var(--ink60); }
+  .when { font-family: var(--mono); font-size: 7.8pt; color: var(--ink60); white-space: nowrap; }
+  .meta { margin-top: 1.5pt; font-size: 8.4pt; color: var(--ink60); }
+  /* Real list markers, not positioned dots: Chrome writes positioned elements
+     to the PDF's text layer last, so every bullet would read after the
+     headings for anyone parsing the file. */
+  .job ul { margin-top: 4pt; padding-left: 9pt; list-style: disc; }
+  .job li { padding-left: 1pt; font-size: 9pt; line-height: 1.5; color: var(--ink75); }
+  .job li::marker { color: var(--leaf); font-size: 7pt; }
+  .job li + li { margin-top: 1.5pt; }
+
+  .skills { display: grid; gap: 2pt; font-size: 9pt; line-height: 1.5; color: var(--ink75); }
+  .skills b { font-weight: 600; color: var(--ink); }
+</style>
+</head>
+<body>
+  <main class="page" id="page">
+    <header>
+      <div>
+        <h1 class="name" id="name"></h1>
+        <p class="title" id="title"></p>
+        <p class="summary" id="summary"></p>
+      </div>
+      <ul class="contact" id="contact"></ul>
+    </header>
+    <section><h2>Experience</h2><div id="experience"></div></section>
+    <section><h2>Skills</h2><div class="skills" id="skills"></div></section>
+    <section><h2>Education</h2><div id="education"></div></section>
+  </main>
+</body>
+</html>

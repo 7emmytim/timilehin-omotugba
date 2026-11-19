@@ -6,15 +6,6 @@ import { t, type Line } from "./tokens";
 const BLANK: Line = [];
 const INDENT = "  ";
 
-/** Splits a paragraph into sentences so each reads as one array entry. */
-function sentences(text: string): string[] {
-  return text
-    .split(". ")
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .map((s) => (s.endsWith(".") ? s : `${s}.`));
-}
-
 function stackLine(indent: string, skills: string[]): Line {
   const line: Line = [t.p(`${indent}stack: [`)];
   skills.forEach((skill, i) => {
@@ -78,7 +69,7 @@ export function buildSource(): SourceSection[] {
   ];
 
   experiences.forEach(
-    ({ company, title, type, location, duration, description, skills }) => {
+    ({ company, title, type, location, duration, highlights, skills }) => {
       experienceLines.push([t.p(`${INDENT}{`)]);
       experienceLines.push([
         t.p(`${INDENT.repeat(2)}company: `),
@@ -99,8 +90,8 @@ export function buildSource(): SourceSection[] {
         experienceLines.push([t.p(`${INDENT.repeat(2)}duration: `), t.str(duration), t.p(",")]);
       }
       experienceLines.push([t.p(`${INDENT.repeat(2)}shipped: [`)]);
-      sentences(description).forEach((sentence) => {
-        experienceLines.push([t.p(INDENT.repeat(3)), t.str(sentence), t.p(",")]);
+      highlights.forEach((highlight) => {
+        experienceLines.push([t.p(INDENT.repeat(3)), t.str(highlight), t.p(",")]);
       });
       experienceLines.push([t.p(`${INDENT.repeat(2)}],`)]);
       experienceLines.push(stackLine(INDENT.repeat(2), skills));
