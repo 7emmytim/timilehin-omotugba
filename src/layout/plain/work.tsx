@@ -118,7 +118,7 @@ function Shot({
   const { name, image, inset, video, url } = project;
   const [broken, setBroken] = useState(false);
   const row = size === "row";
-  const crop = row ? "object-left-top min-[860px]:object-top" : "object-left-top";
+  const crop = row ? "object-left-top min-[860px]:object-top" : "object-top";
 
   return (
     <div
@@ -136,8 +136,10 @@ function Shot({
       {/* Phones get a taller crop so the product's own headline is readable,
           anchored left so the crop cuts the edge, not the words. */}
       <span
-        className={`relative block aspect-[4/3] overflow-hidden rounded-[9px] bg-paper-sunk ${
-          row ? "min-[860px]:aspect-[16/10] min-[860px]:rounded-[10px]" : ""
+        className={`relative block overflow-hidden rounded-[9px] bg-paper-sunk ${
+          row
+            ? "aspect-[4/3] min-[860px]:aspect-[16/10] min-[860px]:rounded-[10px]"
+            : "aspect-video"
         }`}
       >
         {broken ? (
