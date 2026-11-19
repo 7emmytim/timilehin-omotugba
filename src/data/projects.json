@@ -1,5 +1,18 @@
 [
     {
+        "name": "Bad Decisions",
+        "company": "Bad Decisions",
+        "image": "baddecisions",
+        "video": "baddecisions",
+        "url": "https://ai.baddecisions.studio/",
+        "tags": [
+            "Education",
+            "AI"
+        ],
+        "description": "The site for an AI training program, built for people at any level.",
+        "role": ""
+    },
+    {
         "name": "Africa Exchange",
         "company": "AFEX",
         "image": "africa-exchange-v2",
@@ -10,6 +23,19 @@
         ],
         "description": "A marketplace where farmers, processors and investors buy and sell agricultural commodities across Africa.",
         "role": "built and maintain the screens traders use every day, and made them faster."
+    },
+    {
+        "name": "Cudie",
+        "company": "Cudie",
+        "image": "cudie",
+        "video": "cudie",
+        "url": "https://cudie.ng/",
+        "tags": [
+            "Payments",
+            "Mobile"
+        ],
+        "description": "A payments app for sending money, buying airtime and paying bills.",
+        "role": ""
     },
     {
         "name": "Helpa",
@@ -41,31 +67,5 @@
         ],
         "description": "A grant management platform. NICRAT, a national research institute, runs its funding calls on it.",
         "role": "built the application and review screens."
-    },
-    {
-        "name": "Cudie",
-        "company": "Cudie",
-        "image": "cudie",
-        "video": "cudie",
-        "url": "https://cudie.ng/",
-        "tags": [
-            "Payments",
-            "Mobile"
-        ],
-        "description": "A payments app for sending money, buying airtime and paying bills.",
-        "role": ""
-    },
-    {
-        "name": "Bad Decisions",
-        "company": "Bad Decisions",
-        "image": "baddecisions",
-        "video": "baddecisions",
-        "url": "https://ai.baddecisions.studio/",
-        "tags": [
-            "Education",
-            "AI"
-        ],
-        "description": "The site for an AI training program, built for people at any level.",
-        "role": ""
     }
 ]
