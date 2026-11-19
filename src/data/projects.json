@@ -9,8 +9,7 @@
             "Education",
             "AI"
         ],
-        "description": "The site for an AI training program, built for people at any level.",
-        "role": ""
+        "description": "The site for an AI training program, built for people at any level."
     },
     {
         "name": "Africa Exchange",
@@ -21,8 +20,7 @@
             "Trading",
             "AFEX"
         ],
-        "description": "A marketplace where farmers, processors and investors buy and sell agricultural commodities across Africa.",
-        "role": "built and maintain the screens traders use every day, and made them faster."
+        "description": "A marketplace where farmers, processors and investors buy and sell agricultural commodities across Africa."
     },
     {
         "name": "Cudie",
@@ -34,8 +32,7 @@
             "Payments",
             "Mobile"
         ],
-        "description": "A payments app for sending money, buying airtime and paying bills.",
-        "role": ""
+        "description": "A payments app for sending money, buying airtime and paying bills."
     },
     {
         "name": "Helpa",
@@ -46,8 +43,7 @@
             "Healthcare",
             "Charity"
         ],
-        "description": "A platform where NGOs raise money for patients, and donors give in their own currency.",
-        "role": "built the donation flow, the page builder NGOs use, and sign-in for four kinds of users."
+        "description": "A platform where NGOs raise money for patients, and donors give in their own currency."
     },
     {
         "name": "SydFunds",
@@ -65,7 +61,6 @@
             "Grants",
             "NICRAT"
         ],
-        "description": "A grant management platform. NICRAT, a national research institute, runs its funding calls on it.",
-        "role": "built the application and review screens."
+        "description": "A grant management platform. NICRAT, a national research institute, runs its funding calls on it."
     }
 ]

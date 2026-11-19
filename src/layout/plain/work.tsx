@@ -11,7 +11,6 @@ type Project = {
   url: string;
   tags: string[];
   description: string;
-  role: string;
   inset?: string;
   video?: string;
   links?: { label: string; url: string }[];
@@ -118,7 +117,7 @@ function Shot({
   const { name, image, inset, video, url } = project;
   const [broken, setBroken] = useState(false);
   const row = size === "row";
-  const crop = row ? "object-left-top min-[860px]:object-top" : "object-top";
+  const crop = "object-top";
 
   return (
     <div
@@ -133,13 +132,10 @@ function Shot({
           <i className="block h-[9px] w-[9px] rounded-full bg-rule" />
         </span>
       )}
-      {/* Phones get a taller crop so the product's own headline is readable,
-          anchored left so the crop cuts the edge, not the words. */}
+      {/* 16:9 matches the captures, so phones and cards show the whole frame. */}
       <span
-        className={`relative block overflow-hidden rounded-[9px] bg-paper-sunk ${
-          row
-            ? "aspect-[4/3] min-[860px]:aspect-[16/10] min-[860px]:rounded-[10px]"
-            : "aspect-video"
+        className={`relative block aspect-video overflow-hidden rounded-[9px] bg-paper-sunk ${
+          row ? "min-[860px]:aspect-[16/10] min-[860px]:rounded-[10px]" : ""
         }`}
       >
         {broken ? (
@@ -247,7 +243,7 @@ function number(index: number) {
 }
 
 function ProjectRow({ project, index }: { project: Project; index: number }) {
-  const { name, tags, description, role } = project;
+  const { name, tags, description } = project;
 
   return (
     <li className="grid gap-[18px] border-t border-rule py-7 min-[860px]:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)] min-[860px]:items-center min-[860px]:gap-[clamp(28px,5vw,64px)] min-[860px]:py-[clamp(28px,4vw,44px)]">
@@ -266,13 +262,8 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
         </div>
 
         {description && (
-          <p className="m-0 mb-2.5 max-w-[44ch] text-[15.5px] leading-[1.6] text-ink-75 min-[860px]:mb-3.5 min-[860px]:text-[16.5px]">
+          <p className="m-0 max-w-[44ch] text-[15.5px] leading-[1.6] text-ink-75 min-[860px]:text-[16.5px]">
             {description}
-          </p>
-        )}
-        {role && (
-          <p className="m-0 text-[14.5px] leading-[1.55] text-ink-60">
-            <b className="font-semibold text-ink">What I did:</b> {role}
           </p>
         )}
 
